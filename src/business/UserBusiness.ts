@@ -1,5 +1,5 @@
 import { BadRequestError } from "../customErrors/BadRequestError";
-import { NotFound } from "../customErrors/NotFound";
+import { NotFoundError } from "../customErrors/NotFoundError";
 import { UserDatabase } from "../database/UserDatabase";
 import { loginInputDTO, loginOutputDTO } from "../dtos/userDTO/login.dto";
 import { signupInputDTO, signupOutputDTO } from "../dtos/userDTO/signup.dto";
@@ -19,7 +19,7 @@ export class UserBusiness {
   signup = async (userLogin: signupInputDTO): Promise<signupOutputDTO> => {
     const { name, email, password } = userLogin;
 
-    const { userDB } = await this.userDatabase.findUserByEmail(email);
+    const [userDB] = await this.userDatabase.findUserByEmail(email);
 
     if (userDB) {
       throw new BadRequestError("Email alrealdy exists.");
@@ -57,10 +57,10 @@ export class UserBusiness {
   login = async (userLogin: loginInputDTO): Promise<loginOutputDTO> => {
     const { email, password } = userLogin;
 
-    const { userDB } = await this.userDatabase.findUserByEmail(email);
+    const [userDB] = await this.userDatabase.findUserByEmail(email);
 
     if (!userDB) {
-      throw new NotFound("Email not exist.");
+      throw new NotFoundError("Email not exist.");
     }
 
     const isPasswordCorrect = await this.hashManager.compare(
