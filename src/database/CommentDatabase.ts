@@ -4,12 +4,12 @@ import { BaseDatabase } from "./BaseDatabase";
 export class CommentDatabase extends BaseDatabase {
   private COMMENTPOST_TABLE = "comment_post";
 
-  findPostById = async (id_post: string): Promise<CommentDB[]> => {
-    const postsDB: CommentDB[] = await BaseDatabase.connection(
+  findCommentById = async (id_post: string): Promise<CommentDB[]> => {
+    const commentsDB: CommentDB[] = await BaseDatabase.connection(
       this.COMMENTPOST_TABLE
     ).where(id_post);
 
-    return postsDB;
+    return commentsDB;
   };
 
   createComment = async (newComment: CommentDB): Promise<void> => {
