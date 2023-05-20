@@ -5,6 +5,10 @@ import { likeDislikeDatabase } from "../database/LikeDislikeDatabase";
 import { PostDatabase } from "../database/PostsDatabase";
 import { UserDatabase } from "../database/UserDatabase";
 import { GetPostInputDTO } from "../dtos/postDTO/GetPosts.dto";
+import {
+  GetPostByIdInputDTO,
+  GetPostByIdOutputDTO,
+} from "../dtos/postDTO/GetPostsById.dto";
 import { likeOrDislikeInputDTO } from "../dtos/postDTO/LikeOrDislike.dto";
 import { CreatePostInputDTO } from "../dtos/postDTO/createPost.dto";
 import { DeletePostInputDTO } from "../dtos/postDTO/deletePost.dto";
@@ -70,7 +74,10 @@ export class PostsBusiness {
     return posts;
   };
 
-  getPostsById = async (token: string) => {
+  getPostsById = async (
+    input: GetPostByIdInputDTO
+  ): Promise<GetPostByIdOutputDTO> => {
+    const { token, idPost } = input;
     const tokenPayload = this.tokenManager.getPayload(token);
 
     if (!tokenPayload) {
@@ -86,9 +93,7 @@ export class PostsBusiness {
         postDB.creator_id as string
       );
 
-      const commentsDB = await this.commentDatabase.findCommentById(
-        postDB.creator_id as string
-      );
+      const commentsDB = await this.commentDatabase.findCommentById(idPost);
 
       const post = new Post(
         postDB.id,
