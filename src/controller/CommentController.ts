@@ -8,6 +8,7 @@ import { UpdateCommentScheme } from "../dtos/commentDTO/updatePost.dto";
 import { likeOrDislikeCommentScheme } from "../dtos/commentDTO/LikeOrDislikeComment.dto";
 import { DeleteCommentScheme } from "../dtos/commentDTO/deletePost.dto";
 
+//para atualizar mudanças
 export class CommnetController {
   constructor(private commentBusiness: CommentBusiness) {}
 
