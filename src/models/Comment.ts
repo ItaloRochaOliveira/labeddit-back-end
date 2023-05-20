@@ -1,5 +1,7 @@
 export interface CommentModel {
   id: string;
+  idUser: string;
+  idPost: string;
   content: string;
   likes: number;
   dislikes: number;

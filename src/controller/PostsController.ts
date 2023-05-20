@@ -8,7 +8,7 @@ import { likeOrDislikeScheme } from "../dtos/postDTO/LikeOrDislike.dto";
 import { ZodError } from "zod";
 import { BaseError } from "../customErrors/BaseError";
 
-export class PostController {
+export class PostsController {
   constructor(private postsBusiness: PostsBusiness) {}
 
   getAllPosts = async (req: Request, res: Response) => {
@@ -33,11 +33,29 @@ export class PostController {
     }
   };
 
-  getPostsById = async () => {};
+  getPostsById = async (req: Request, res: Response) => {
+    try {
+      const token = GetPostSchema.parse({
+        token: req.headers.authorization,
+      });
+
+      const posts = await this.postsBusiness.getAllPosts(token);
+
+      res.status(200).send(posts);
+    } catch (error) {
+      console.log(error);
+
+      if (error instanceof ZodError) {
+        res.status(400).send(error.issues);
+      } else if (error instanceof BaseError) {
+        res.status(error.statusCode).send(error.message);
+      } else {
+        res.status(500).send("erro inesperado");
+      }
+    }
+  };
 
   createPost = async (req: Request, res: Response) => {
-    // const headers = req.headers.authorization;
-
     try {
       const userPost = CreatePostScheme.parse({
         token: req.headers.authorization,
