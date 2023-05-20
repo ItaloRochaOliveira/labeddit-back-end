@@ -7,6 +7,7 @@ import { DeletePostScheme } from "../dtos/postDTO/deletePost.dto";
 import { likeOrDislikeScheme } from "../dtos/postDTO/LikeOrDislike.dto";
 import { ZodError } from "zod";
 import { BaseError } from "../customErrors/BaseError";
+import { GetPostByIdSchema } from "../dtos/postDTO/GetPostsById.dto";
 
 export class PostsController {
   constructor(private postsBusiness: PostsBusiness) {}
@@ -35,11 +36,12 @@ export class PostsController {
 
   getPostsById = async (req: Request, res: Response) => {
     try {
-      const token = GetPostSchema.parse({
+      const input = GetPostByIdSchema.parse({
+        idPost: req.params.id,
         token: req.headers.authorization,
       });
 
-      const posts = await this.postsBusiness.getAllPosts(token);
+      const posts = await this.postsBusiness.getPostsById(input);
 
       res.status(200).send(posts);
     } catch (error) {

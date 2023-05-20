@@ -8,6 +8,8 @@ import { CommentDatabase } from "../database/CommentDatabase";
 import { LikeDislikeCommentDatabase } from "../database/LikeDislikeCommentDatabase";
 import { TokenManager } from "../services/TokenManager";
 import { IdGerator } from "../services/IdGerator";
+import { CommnetController } from "../controller/CommentController";
+import { CommentBusiness } from "../business/CommentBusiness";
 
 export const postsRoutes = express.Router();
 
@@ -22,12 +24,26 @@ const postsController = new PostsController(
   )
 );
 
+const commentController = new CommnetController(
+  new CommentBusiness(
+    new PostDatabase(),
+    new CommentDatabase(),
+    new LikeDislikeCommentDatabase(),
+    new TokenManager(),
+    new IdGerator()
+  )
+);
+
 postsRoutes.get("/", postsController.getAllPosts);
-postsRoutes.get("/:id/comment", postsController.getPostsById);
+postsRoutes.get("/:id/post", postsController.getPostsById);
 
-postsRoutes.post("/", postsController.createPost);
+postsRoutes.post("/post", postsController.createPost);
+postsRoutes.post("/comment", commentController.createComment);
 
-postsRoutes.put("/", postsController.editPosts);
-postsRoutes.put("/:id/like", postsController.likesOrDislikes);
+postsRoutes.put("/:id/post", postsController.editPosts);
+postsRoutes.put("/:id/comment", commentController.editComment);
+postsRoutes.put("/:id/post/like", postsController.likesOrDislikes);
+postsRoutes.put("/:id/comment/like", commentController.likesOrDislikesComment);
 
-postsRoutes.delete("/", postsController.deletePost);
+postsRoutes.delete("/:id/post", postsController.deletePost);
+postsRoutes.delete("/:id/comment");

@@ -1,5 +1,5 @@
 export interface LikeOrDislikeCommentDB {
-  user_id: string;
-  comment_id: string;
-  like: number;
+  id_user: string;
+  id_comment: string;
+  like: number | null;
 }
