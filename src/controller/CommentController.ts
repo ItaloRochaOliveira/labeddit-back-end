@@ -6,20 +6,21 @@ import { CommentBusiness } from "../business/CommentBusiness";
 import { CreateCommentScheme } from "../dtos/commentDTO/createComment.dto";
 import { UpdateCommentScheme } from "../dtos/commentDTO/updatePost.dto";
 import { likeOrDislikeCommentScheme } from "../dtos/commentDTO/LikeOrDislikeComment.dto";
+import { DeleteCommentScheme } from "../dtos/commentDTO/deletePost.dto";
 
 export class CommnetController {
   constructor(private commentBusiness: CommentBusiness) {}
 
   createComment = async (req: Request, res: Response) => {
     try {
-      const userPost = CreateCommentScheme.parse({
+      const userComment = CreateCommentScheme.parse({
         token: req.headers.authorization,
         content: req.body.content,
         idPost: req.params.id,
       });
 
       const result = await this.commentBusiness.createCommentsByIdPost(
-        userPost
+        userComment
       );
 
       res.status(200).send(result);
@@ -64,13 +65,13 @@ export class CommnetController {
 
   deleteComment = async (req: Request, res: Response) => {
     try {
-      const postForDelete = DeletePostScheme.parse({
+      const CommentForDelete = DeleteCommentScheme.parse({
         token: req.headers.authorization,
         id: req.params.id,
       });
 
       const response = await this.commentBusiness.deleteCommentsByIdPost(
-        postForDelete
+        CommentForDelete
       );
 
       res.status(200).send(response);
@@ -89,14 +90,14 @@ export class CommnetController {
 
   likesOrDislikesComment = async (req: Request, res: Response) => {
     try {
-      const postLikeOrDislike = likeOrDislikeCommentScheme.parse({
+      const commentLikeOrDislike = likeOrDislikeCommentScheme.parse({
         token: req.headers.authorization,
         id: req.params.id,
         like: req.body.like,
       });
 
       const response = await this.commentBusiness.likeOrDislikeComments(
-        postLikeOrDislike
+        commentLikeOrDislike
       );
 
       res.status(200).send(response);

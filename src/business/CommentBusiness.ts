@@ -12,7 +12,6 @@ import { DeleteCommentInputDTO } from "../dtos/commentDTO/deletePost.dto";
 import { UpdateCommentInputDTO } from "../dtos/commentDTO/updatePost.dto";
 import { Comment, CommentDB, CommentModel } from "../models/Comment";
 import { LikeOrDislikeCommentDB } from "../models/LikeOrDislikeComment";
-import { PostModel } from "../models/Post";
 import { IdGerator } from "../services/IdGerator";
 import { TokenManager } from "../services/TokenManager";
 
