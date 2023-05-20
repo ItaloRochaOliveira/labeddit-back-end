@@ -17,7 +17,6 @@ const postsController = new PostsController(
     new UserDatabase(),
     new likeDislikeDatabase(),
     new CommentDatabase(),
-    new LikeDislikeCommentDatabase(),
     new TokenManager(),
     new IdGerator()
   )
@@ -28,7 +27,7 @@ postsRoutes.get("/:id/comment", postsController.getPostsById);
 
 postsRoutes.post("/", postsController.createPost);
 
-postsRoutes.put("/", postsController.editPost);
-postsRoutes.put("/:id/like", postsController.likeDislikePost);
+postsRoutes.put("/", postsController.editPosts);
+postsRoutes.put("/:id/like", postsController.likesOrDislikes);
 
 postsRoutes.delete("/", postsController.deletePost);

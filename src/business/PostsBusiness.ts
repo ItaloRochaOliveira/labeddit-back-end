@@ -1,7 +1,6 @@
 import { BadRequestError } from "../customErrors/BadRequestError";
 import { NotFoundError } from "../customErrors/NotFoundError";
 import { CommentDatabase } from "../database/CommentDatabase";
-import { LikeDislikeCommentDatabase } from "../database/LikeDislikeCommentDatabase";
 import { likeDislikeDatabase } from "../database/LikeDislikeDatabase";
 import { PostDatabase } from "../database/PostsDatabase";
 import { UserDatabase } from "../database/UserDatabase";
@@ -22,7 +21,6 @@ export class PostsBusiness {
     private userDatabase: UserDatabase,
     private likesOrDislikeDatabase: likeDislikeDatabase,
     private commentDatabase: CommentDatabase,
-    private commentLikeOrDislikeDatabase: LikeDislikeCommentDatabase,
     private tokenManager: TokenManager,
     private idGerator: IdGerator
   ) {}
