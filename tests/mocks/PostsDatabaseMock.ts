@@ -3,7 +3,7 @@ import { PostDB } from "../../src/models/Post";
 
 const postsMock: PostDB[] = [
   {
-    id: "id-v4-1-mock",
+    id: "id-do-post-1-mock",
     content: "Primeiro post para test",
     likes: 0,
     dislikes: 0,
@@ -12,7 +12,7 @@ const postsMock: PostDB[] = [
     creator_id: "id-do-normal",
   },
   {
-    id: "id-v4-2-mock",
+    id: "id-do-post-2-mock",
     content: "Segundo post para test",
     likes: 0,
     dislikes: 0,

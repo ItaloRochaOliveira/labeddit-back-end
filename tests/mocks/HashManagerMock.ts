@@ -1,4 +1,4 @@
-export class HashManager {
+export class HashManagerMock {
   public hash = async (plaintext: string): Promise<string> => {
     return "new-hash-mock";
   };
@@ -10,9 +10,9 @@ export class HashManager {
     // return bcrypt.compare(plaintext, hash);
 
     switch (plaintext) {
-      case "12345":
+      case "Senha/123AA":
         return hash === "hash-mock-admin-it-programer";
-      case "54321":
+      case "1a/3()0SST2":
         return hash === "hash-mock-normal-it-user";
 
       default:
