@@ -21,7 +21,7 @@ const usersMock: UserDB[] = [
 ];
 
 export class UserDatabaseMock extends BaseDatabase {
-  private USERS_TABLE = "users";
+  private static USERS_TABLE = "users";
 
   findUserById = async (id: string): Promise<UserDB[]> => {
     const user: UserDB[] = usersMock.filter((userMock) => userMock.id === id);

@@ -31,9 +31,7 @@ export class likeDislikeDatabaseMock extends BaseDatabase {
     user_id: string,
     post_id: string,
     newLikeOrDislike: any
-  ) => {
-    return "Atualizado com sucesso!";
-  };
+  ) => {};
 
   deleteLikeOrDislike = async (post_id: string): Promise<void> => {};
 }

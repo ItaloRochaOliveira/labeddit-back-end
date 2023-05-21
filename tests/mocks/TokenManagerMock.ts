@@ -1,6 +1,6 @@
 import { TokenPayload, USER_ROLES } from "../../src/models/User";
 
-export class TokenManager {
+export class TokenManagerMock {
   public createToken = (payload: TokenPayload): string => {
     if (payload.id === "new-id-123-mock") {
       return "novo-token-mock";

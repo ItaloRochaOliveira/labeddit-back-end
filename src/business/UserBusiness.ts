@@ -63,9 +63,11 @@ export class UserBusiness {
       throw new NotFoundError("Email not exist.");
     }
 
+    const hashPassword = userDB.password;
+
     const isPasswordCorrect = await this.hashManager.compare(
-      userDB.password,
-      password
+      password,
+      hashPassword
     );
 
     if (!isPasswordCorrect) {
