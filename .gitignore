@@ -1,9 +1,8 @@
 node_modules
 build
+coverage
 .DS_Store
 db
 .db
 *.db
 .env
-
-coverage

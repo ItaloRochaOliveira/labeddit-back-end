@@ -4,7 +4,7 @@ export class TokenManagerMock {
   public createToken = (payload: TokenPayload): string => {
     if (payload.id === "new-id-123-mock") {
       return "novo-token-mock";
-    } else if (payload.id === "id-do-admin") {
+    } else if (payload.id === "id-admin") {
       return "token-mock-admin";
     } else {
       return "token-mock-normal";
@@ -14,13 +14,13 @@ export class TokenManagerMock {
   public getPayload = (token: string): TokenPayload | null => {
     if (token === "token-mock-normal") {
       return {
-        id: "id-do-normal",
+        id: "id-normal",
         name: "it-user",
         role: USER_ROLES.NORMAL,
       };
     } else if (token === "token-mock-admin") {
       return {
-        id: "id-do-admin",
+        id: "id-admin",
         name: "it-programmer",
         role: USER_ROLES.ADMIN,
       };

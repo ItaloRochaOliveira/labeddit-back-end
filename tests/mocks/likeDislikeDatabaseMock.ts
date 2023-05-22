@@ -3,14 +3,9 @@ import { LikeOrDislikeDB } from "../../src/models/LikeOrDislike";
 
 const likeDislikeMock: LikeOrDislikeDB[] = [
   {
-    post_id: "id-v4-1-mock",
-    user_id: "id-do-admin",
+    post_id: "id-post-1-mock",
+    user_id: "id-admin",
     like: null,
-  },
-  {
-    post_id: "id-v4-2-mock",
-    user_id: "id-do-normal",
-    like: 1,
   },
 ];
 
