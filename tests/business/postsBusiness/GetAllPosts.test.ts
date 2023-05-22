@@ -8,6 +8,7 @@ import { TokenManagerMock } from "../../mocks/TokenManagerMock";
 import { GetPostSchema } from "../../../src/dtos/postDTO/GetPosts.dto";
 import { ZodError } from "zod";
 import { NotFoundError } from "../../../src/customErrors/NotFoundError";
+import { LikeDislikeCommentDatabaseMock } from "../../mocks/likeDislikeCommentDatabaseMock";
 
 describe("Test GetAllPosts Business", () => {
   const postsBusiness = new PostsBusiness(
@@ -16,7 +17,8 @@ describe("Test GetAllPosts Business", () => {
     new likeDislikeDatabaseMock(),
     new CommentDatabaseMock(),
     new TokenManagerMock(),
-    new IdGeratorMock()
+    new IdGeratorMock(),
+    new LikeDislikeCommentDatabaseMock()
   );
 
   test("If return all posts", async () => {

@@ -8,6 +8,7 @@ import { TokenManagerMock } from "../../mocks/TokenManagerMock";
 import { CreatePostScheme } from "../../../src/dtos/postDTO/createPost.dto";
 import { ZodError } from "zod";
 import { NotFoundError } from "../../../src/customErrors/NotFoundError";
+import { LikeDislikeCommentDatabaseMock } from "../../mocks/likeDislikeCommentDatabaseMock";
 
 describe("Test createPost Business", () => {
   const postsBusiness = new PostsBusiness(
@@ -16,7 +17,8 @@ describe("Test createPost Business", () => {
     new likeDislikeDatabaseMock(),
     new CommentDatabaseMock(),
     new TokenManagerMock(),
-    new IdGeratorMock()
+    new IdGeratorMock(),
+    new LikeDislikeCommentDatabaseMock()
   );
 
   test("If post created", async () => {

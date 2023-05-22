@@ -134,10 +134,11 @@ export class CommentBusiness {
       content,
       0,
       0,
-      new Date().toISOString(),
-      ""
+      commentDB.created_at,
+      commentDB.updated_at
     );
 
+    newComment.UPDATEDAT = new Date().toISOString();
     content && (newComment.CONTENT = content);
 
     const updatePostDB = newComment.CommentToDB();

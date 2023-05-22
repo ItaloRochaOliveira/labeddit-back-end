@@ -9,6 +9,7 @@ import { DeletePostScheme } from "../../../src/dtos/postDTO/deletePost.dto";
 import { ZodError } from "zod";
 import { NotFoundError } from "../../../src/customErrors/NotFoundError";
 import { BadRequestError } from "../../../src/customErrors/BadRequestError";
+import { LikeDislikeCommentDatabaseMock } from "../../mocks/likeDislikeCommentDatabaseMock";
 
 describe("Test deletePost Business", () => {
   const postsBusiness = new PostsBusiness(
@@ -17,7 +18,8 @@ describe("Test deletePost Business", () => {
     new likeDislikeDatabaseMock(),
     new CommentDatabaseMock(),
     new TokenManagerMock(),
-    new IdGeratorMock()
+    new IdGeratorMock(),
+    new LikeDislikeCommentDatabaseMock()
   );
 
   test("If delete post successfully", async () => {

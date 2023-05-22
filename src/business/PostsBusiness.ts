@@ -1,6 +1,7 @@
 import { BadRequestError } from "../customErrors/BadRequestError";
 import { NotFoundError } from "../customErrors/NotFoundError";
 import { CommentDatabase } from "../database/CommentDatabase";
+import { LikeDislikeCommentDatabase } from "../database/LikeDislikeCommentDatabase";
 import { likeDislikeDatabase } from "../database/LikeDislikeDatabase";
 import { PostDatabase } from "../database/PostsDatabase";
 import { UserDatabase } from "../database/UserDatabase";
@@ -27,7 +28,8 @@ export class PostsBusiness {
     private likesOrDislikeDatabase: likeDislikeDatabase,
     private commentDatabase: CommentDatabase,
     private tokenManager: TokenManager,
-    private idGerator: IdGerator
+    private idGerator: IdGerator,
+    private likeDislikeCommentDatabase: LikeDislikeCommentDatabase
   ) {}
 
   getAllPosts = async ({ token }: GetPostInputDTO): Promise<PostModel[]> => {
@@ -215,11 +217,12 @@ export class PostsBusiness {
       postDB.likes,
       postDB.dislikes,
       postDB.created_at,
-      new Date().toISOString(),
+      postDB.updated_at,
       undefined,
       userId
     );
 
+    post.UPDATEDAT = new Date().toISOString();
     content && (post.CONTENT = content);
 
     const updatePostDB = post.PostToDB();
@@ -246,8 +249,20 @@ export class PostsBusiness {
 
     const postOfUser = postDB.creator_id === tokenPayload.id;
 
-    if (!postOfUser) {
-      throw new BadRequestError("only the user can update the post");
+    if (tokenPayload.role !== USER_ROLES.ADMIN) {
+      if (!postOfUser) {
+        throw new BadRequestError("only the user can update the post");
+      }
+    }
+
+    const commentsDB = await this.commentDatabase.findCommentByIdPost(id);
+
+    for (let commentDB of commentsDB) {
+      await this.likeDislikeCommentDatabase.deleteLikeOrDislikeComment(
+        commentDB.id
+      );
+
+      await this.commentDatabase.deleteComment(commentDB.id);
     }
 
     await this.likesOrDislikeDatabase.deleteLikeOrDislike(id);

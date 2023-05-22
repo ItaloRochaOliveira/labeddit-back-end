@@ -9,6 +9,7 @@ import { UpdatePostScheme } from "../../../src/dtos/postDTO/updatePost.dto";
 import { ZodError } from "zod";
 import { NotFoundError } from "../../../src/customErrors/NotFoundError";
 import { BadRequestError } from "../../../src/customErrors/BadRequestError";
+import { LikeDislikeCommentDatabaseMock } from "../../mocks/likeDislikeCommentDatabaseMock";
 
 describe("Test editPost Business", () => {
   const postsBusiness = new PostsBusiness(
@@ -17,7 +18,8 @@ describe("Test editPost Business", () => {
     new likeDislikeDatabaseMock(),
     new CommentDatabaseMock(),
     new TokenManagerMock(),
-    new IdGeratorMock()
+    new IdGeratorMock(),
+    new LikeDislikeCommentDatabaseMock()
   );
 
   test("If edit post successfully", async () => {
