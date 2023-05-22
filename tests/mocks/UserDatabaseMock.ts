@@ -3,7 +3,7 @@ import { USER_ROLES, UserDB } from "../../src/models/User";
 
 const usersMock: UserDB[] = [
   {
-    id: "id-do-admin",
+    id: "id-admin",
     name: "it-programmer",
     email: "it-programmer@gmail.com",
     password: "hash-mock-admin-it-programer",
@@ -11,10 +11,10 @@ const usersMock: UserDB[] = [
     created_at: new Date().toISOString(),
   },
   {
-    id: "id-do-normal",
+    id: "id-normal",
     name: "it-user",
     email: "it-normal@gmail.com",
-    password: USER_ROLES.NORMAL,
+    password: "hash-mock-normal-it-user",
     role: USER_ROLES.NORMAL,
     created_at: new Date().toISOString(),
   },

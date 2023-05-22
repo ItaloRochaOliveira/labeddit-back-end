@@ -1,19 +1,144 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1684677360074" clover="3.2.0">
-  <project timestamp="1684677360074" name="All files">
-    <metrics statements="117" coveredstatements="76" conditionals="18" coveredconditionals="4" methods="48" coveredmethods="22" elements="183" coveredelements="102" complexity="0" loc="117" ncloc="117" packages="6" files="11" classes="11"/>
+<coverage generated="1684716557072" clover="3.2.0">
+  <project timestamp="1684716557073" name="All files">
+    <metrics statements="346" coveredstatements="305" conditionals="58" coveredconditionals="51" methods="133" coveredmethods="86" elements="537" coveredelements="442" complexity="0" loc="346" ncloc="346" packages="7" files="24" classes="24"/>
     <package name="src.business">
-      <metrics statements="35" coveredstatements="23" conditionals="3" coveredconditionals="1" methods="5" coveredmethods="3"/>
+      <metrics statements="158" coveredstatements="154" conditionals="43" coveredconditionals="38" methods="18" coveredmethods="18"/>
+      <file name="PostsBusiness.ts" path="C:\Users\hiani\Desktop\italo\programacao\projeto\modulo-4\labeddit\back\labeddit-back-end\src\business\PostsBusiness.ts">
+        <metrics statements="122" coveredstatements="118" conditionals="40" coveredconditionals="35" methods="13" coveredmethods="13"/>
+        <line num="1" count="6" type="stmt"/>
+        <line num="2" count="6" type="stmt"/>
+        <line num="16" count="6" type="stmt"/>
+        <line num="18" count="6" type="stmt"/>
+        <line num="23" count="6" type="stmt"/>
+        <line num="25" count="6" type="stmt"/>
+        <line num="26" count="6" type="stmt"/>
+        <line num="27" count="6" type="stmt"/>
+        <line num="28" count="6" type="stmt"/>
+        <line num="29" count="6" type="stmt"/>
+        <line num="30" count="6" type="stmt"/>
+        <line num="33" count="6" type="stmt"/>
+        <line num="34" count="2" type="stmt"/>
+        <line num="36" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="45" count="2" type="stmt"/>
+        <line num="49" count="2" type="stmt"/>
+        <line num="62" count="2" type="stmt"/>
+        <line num="72" count="2" type="stmt"/>
+        <line num="75" count="1" type="stmt"/>
+        <line num="78" count="6" type="stmt"/>
+        <line num="80" count="3" type="stmt"/>
+        <line num="81" count="3" type="stmt"/>
+        <line num="82" count="3" type="stmt"/>
+        <line num="84" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="85" count="1" type="stmt"/>
+        <line num="88" count="2" type="stmt"/>
+        <line num="90" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="91" count="1" type="stmt"/>
+        <line num="94" count="1" type="stmt"/>
+        <line num="96" count="1" type="stmt"/>
+        <line num="97" count="1" type="stmt"/>
+        <line num="101" count="1" type="stmt"/>
+        <line num="103" count="1" type="stmt"/>
+        <line num="116" count="1" type="stmt"/>
+        <line num="118" count="1" type="stmt"/>
+        <line num="119" count="1" type="stmt"/>
+        <line num="130" count="1" type="stmt"/>
+        <line num="133" count="1" type="stmt"/>
+        <line num="144" count="1" type="stmt"/>
+        <line num="147" count="1" type="stmt"/>
+        <line num="150" count="6" type="stmt"/>
+        <line num="151" count="2" type="stmt"/>
+        <line num="152" count="2" type="stmt"/>
+        <line num="154" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="155" count="1" type="stmt"/>
+        <line num="158" count="1" type="stmt"/>
+        <line num="160" count="1" type="stmt"/>
+        <line num="171" count="1" type="stmt"/>
+        <line num="173" count="1" type="stmt"/>
+        <line num="175" count="1" type="stmt"/>
+        <line num="178" count="6" type="stmt"/>
+        <line num="179" count="4" type="stmt"/>
+        <line num="181" count="4" type="stmt"/>
+        <line num="183" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="184" count="1" type="stmt"/>
+        <line num="187" count="3" type="stmt"/>
+        <line num="189" count="3" type="stmt"/>
+        <line num="191" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="192" count="1" type="stmt"/>
+        <line num="195" count="2" type="stmt"/>
+        <line num="197" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="198" count="1" type="stmt"/>
+        <line num="201" count="1" type="stmt"/>
+        <line num="212" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="214" count="1" type="stmt"/>
+        <line num="216" count="1" type="stmt"/>
+        <line num="218" count="1" type="stmt"/>
+        <line num="221" count="6" type="stmt"/>
+        <line num="222" count="4" type="stmt"/>
+        <line num="224" count="4" type="stmt"/>
+        <line num="226" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="227" count="1" type="stmt"/>
+        <line num="230" count="3" type="stmt"/>
+        <line num="232" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="233" count="1" type="stmt"/>
+        <line num="236" count="2" type="stmt"/>
+        <line num="238" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="239" count="1" type="stmt"/>
+        <line num="242" count="1" type="stmt"/>
+        <line num="244" count="1" type="stmt"/>
+        <line num="246" count="1" type="stmt"/>
+        <line num="249" count="7" type="stmt"/>
+        <line num="250" count="7" type="stmt"/>
+        <line num="252" count="7" type="stmt"/>
+        <line num="254" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="255" count="1" type="stmt"/>
+        <line num="258" count="6" type="stmt"/>
+        <line num="259" count="6" type="stmt"/>
+        <line num="263" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="265" count="6" type="stmt"/>
+        <line num="272" count="6" type="stmt"/>
+        <line num="274" count="6" type="stmt"/>
+        <line num="276" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="277" count="1" type="stmt"/>
+        <line num="280" count="5" type="cond" truecount="1" falsecount="0"/>
+        <line num="281" count="1" type="stmt"/>
+        <line num="286" count="4" type="cond" truecount="4" falsecount="0"/>
+        <line num="289" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="290" count="1" type="stmt"/>
+        <line num="292" count="1" type="stmt"/>
+        <line num="295" count="2" type="stmt"/>
+        <line num="297" count="2" type="stmt"/>
+        <line num="301" count="2" type="stmt"/>
+        <line num="305" count="2" type="cond" truecount="4" falsecount="0"/>
+        <line num="306" count="1" type="stmt"/>
+        <line num="307" count="1" type="cond" truecount="3" falsecount="0"/>
+        <line num="308" count="1" type="stmt"/>
+        <line num="311" count="2" type="cond" truecount="0" falsecount="1"/>
+        <line num="312" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="316" count="0" type="stmt"/>
+        <line num="319" count="2" type="cond" truecount="3" falsecount="1"/>
+        <line num="320" count="0" type="stmt"/>
+        <line num="325" count="2" type="cond" truecount="2" falsecount="1"/>
+        <line num="326" count="0" type="stmt"/>
+        <line num="333" count="2" type="stmt"/>
+        <line num="335" count="2" type="stmt"/>
+        <line num="341" count="2" type="stmt"/>
+        <line num="344" count="4" type="stmt"/>
+      </file>
       <file name="UserBusiness.ts" path="C:\Users\hiani\Desktop\italo\programacao\projeto\modulo-4\labeddit\back\labeddit-back-end\src\business\UserBusiness.ts">
-        <metrics statements="35" coveredstatements="23" conditionals="3" coveredconditionals="1" methods="5" coveredmethods="3"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
+        <metrics statements="36" coveredstatements="36" conditionals="3" coveredconditionals="3" methods="5" coveredmethods="5"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
         <line num="19" count="2" type="stmt"/>
         <line num="20" count="2" type="stmt"/>
         <line num="22" count="2" type="stmt"/>
@@ -28,56 +153,101 @@
         <line num="47" count="1" type="stmt"/>
         <line num="49" count="1" type="stmt"/>
         <line num="54" count="1" type="stmt"/>
-        <line num="57" count="1" type="stmt"/>
-        <line num="58" count="0" type="stmt"/>
-        <line num="60" count="0" type="stmt"/>
-        <line num="62" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="63" count="0" type="stmt"/>
-        <line num="66" count="0" type="stmt"/>
-        <line num="71" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="72" count="0" type="stmt"/>
-        <line num="75" count="0" type="stmt"/>
-        <line num="84" count="0" type="stmt"/>
-        <line num="86" count="0" type="stmt"/>
-        <line num="88" count="0" type="stmt"/>
-        <line num="93" count="0" type="stmt"/>
+        <line num="57" count="4" type="stmt"/>
+        <line num="58" count="4" type="stmt"/>
+        <line num="60" count="4" type="stmt"/>
+        <line num="62" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="63" count="1" type="stmt"/>
+        <line num="66" count="3" type="stmt"/>
+        <line num="68" count="3" type="stmt"/>
+        <line num="73" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="74" count="1" type="stmt"/>
+        <line num="77" count="2" type="stmt"/>
+        <line num="86" count="2" type="stmt"/>
+        <line num="88" count="2" type="stmt"/>
+        <line num="90" count="2" type="stmt"/>
+        <line num="95" count="2" type="stmt"/>
       </file>
     </package>
     <package name="src.customErrors">
-      <metrics statements="9" coveredstatements="8" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="2"/>
+      <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="3"/>
       <file name="BadRequestError.ts" path="C:\Users\hiani\Desktop\italo\programacao\projeto\modulo-4\labeddit\back\labeddit-back-end\src\customErrors\BadRequestError.ts">
         <metrics statements="3" coveredstatements="3" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
+        <line num="1" count="8" type="stmt"/>
+        <line num="3" count="8" type="stmt"/>
+        <line num="5" count="5" type="stmt"/>
       </file>
       <file name="BaseError.ts" path="C:\Users\hiani\Desktop\italo\programacao\projeto\modulo-4\labeddit\back\labeddit-back-end\src\customErrors\BaseError.ts">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
+        <line num="1" count="8" type="stmt"/>
+        <line num="2" count="16" type="stmt"/>
+        <line num="3" count="16" type="stmt"/>
       </file>
       <file name="NotFoundError.ts" path="C:\Users\hiani\Desktop\italo\programacao\projeto\modulo-4\labeddit\back\labeddit-back-end\src\customErrors\NotFoundError.ts">
-        <metrics statements="3" coveredstatements="2" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
+        <metrics statements="3" coveredstatements="3" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="8" type="stmt"/>
+        <line num="3" count="8" type="stmt"/>
+        <line num="5" count="11" type="stmt"/>
       </file>
     </package>
     <package name="src.database">
       <metrics statements="6" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="BaseDatabase.ts" path="C:\Users\hiani\Desktop\italo\programacao\projeto\modulo-4\labeddit\back\labeddit-back-end\src\database\BaseDatabase.ts">
         <metrics statements="6" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
+        <line num="1" count="8" type="stmt"/>
+        <line num="2" count="8" type="stmt"/>
+        <line num="4" count="8" type="stmt"/>
+        <line num="6" count="8" type="stmt"/>
+        <line num="7" count="8" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
       </file>
     </package>
+    <package name="src.dtos.postDTO">
+      <metrics statements="18" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
+      <file name="GetPosts.dto.ts" path="C:\Users\hiani\Desktop\italo\programacao\projeto\modulo-4\labeddit\back\labeddit-back-end\src\dtos\postDTO\GetPosts.dto.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+      </file>
+      <file name="GetPostsById.dto.ts" path="C:\Users\hiani\Desktop\italo\programacao\projeto\modulo-4\labeddit\back\labeddit-back-end\src\dtos\postDTO\GetPostsById.dto.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="19" count="3" type="stmt"/>
+      </file>
+      <file name="LikeOrDislike.dto.ts" path="C:\Users\hiani\Desktop\italo\programacao\projeto\modulo-4\labeddit\back\labeddit-back-end\src\dtos\postDTO\LikeOrDislike.dto.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="15" count="7" type="stmt"/>
+      </file>
+      <file name="createPost.dto.ts" path="C:\Users\hiani\Desktop\italo\programacao\projeto\modulo-4\labeddit\back\labeddit-back-end\src\dtos\postDTO\createPost.dto.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+      </file>
+      <file name="deletePost.dto.ts" path="C:\Users\hiani\Desktop\italo\programacao\projeto\modulo-4\labeddit\back\labeddit-back-end\src\dtos\postDTO\deletePost.dto.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
+      </file>
+      <file name="updatePost.dto.ts" path="C:\Users\hiani\Desktop\italo\programacao\projeto\modulo-4\labeddit\back\labeddit-back-end\src\dtos\postDTO\updatePost.dto.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+      </file>
+    </package>
     <package name="src.dtos.userDTO">
-      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="login.dto.ts" path="C:\Users\hiani\Desktop\italo\programacao\projeto\modulo-4\labeddit\back\labeddit-back-end\src\dtos\userDTO\login.dto.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+      </file>
       <file name="signup.dto.ts" path="C:\Users\hiani\Desktop\italo\programacao\projeto\modulo-4\labeddit\back\labeddit-back-end\src\dtos\userDTO\signup.dto.ts">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
@@ -85,19 +255,75 @@
       </file>
     </package>
     <package name="src.models">
-      <metrics statements="24" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="16" coveredmethods="4"/>
-      <file name="User.ts" path="C:\Users\hiani\Desktop\italo\programacao\projeto\modulo-4\labeddit\back\labeddit-back-end\src\models\User.ts">
-        <metrics statements="24" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="16" coveredmethods="4"/>
-        <line num="1" count="1" type="cond" truecount="2" falsecount="0"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
+      <metrics statements="74" coveredstatements="38" conditionals="2" coveredconditionals="2" methods="50" coveredmethods="14"/>
+      <file name="Comment.ts" path="C:\Users\hiani\Desktop\italo\programacao\projeto\modulo-4\labeddit\back\labeddit-back-end\src\models\Comment.ts">
+        <metrics statements="26" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="18" coveredmethods="1"/>
+        <line num="23" count="6" type="stmt"/>
         <line num="25" count="1" type="stmt"/>
         <line num="26" count="1" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
         <line num="28" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="60" count="0" type="stmt"/>
+        <line num="64" count="0" type="stmt"/>
+        <line num="68" count="0" type="stmt"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="76" count="0" type="stmt"/>
+        <line num="80" count="0" type="stmt"/>
+        <line num="84" count="0" type="stmt"/>
+        <line num="88" count="0" type="stmt"/>
+        <line num="92" count="0" type="stmt"/>
+        <line num="96" count="0" type="stmt"/>
+        <line num="100" count="0" type="stmt"/>
+      </file>
+      <file name="Post.ts" path="C:\Users\hiani\Desktop\italo\programacao\projeto\modulo-4\labeddit\back\labeddit-back-end\src\models\Post.ts">
+        <metrics statements="24" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="16" coveredmethods="9"/>
+        <line num="26" count="6" type="stmt"/>
+        <line num="28" count="5" type="stmt"/>
+        <line num="29" count="5" type="stmt"/>
+        <line num="30" count="5" type="stmt"/>
+        <line num="31" count="5" type="stmt"/>
+        <line num="32" count="5" type="stmt"/>
+        <line num="33" count="5" type="stmt"/>
+        <line num="34" count="5" type="stmt"/>
+        <line num="35" count="5" type="stmt"/>
+        <line num="39" count="3" type="stmt"/>
+        <line num="43" count="3" type="stmt"/>
+        <line num="47" count="3" type="stmt"/>
+        <line num="51" count="3" type="stmt"/>
+        <line num="55" count="6" type="stmt"/>
+        <line num="59" count="0" type="stmt"/>
+        <line num="63" count="3" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="71" count="1" type="stmt"/>
+        <line num="75" count="0" type="stmt"/>
+        <line num="79" count="0" type="stmt"/>
+        <line num="83" count="0" type="stmt"/>
+        <line num="87" count="0" type="stmt"/>
+        <line num="91" count="0" type="stmt"/>
+        <line num="95" count="2" type="stmt"/>
+      </file>
+      <file name="User.ts" path="C:\Users\hiani\Desktop\italo\programacao\projeto\modulo-4\labeddit\back\labeddit-back-end\src\models\User.ts">
+        <metrics statements="24" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="16" coveredmethods="4"/>
+        <line num="1" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="2" count="8" type="stmt"/>
+        <line num="3" count="8" type="stmt"/>
+        <line num="21" count="8" type="stmt"/>
+        <line num="23" count="3" type="stmt"/>
+        <line num="24" count="3" type="stmt"/>
+        <line num="25" count="3" type="stmt"/>
+        <line num="26" count="3" type="stmt"/>
+        <line num="27" count="3" type="stmt"/>
+        <line num="28" count="3" type="stmt"/>
         <line num="32" count="0" type="stmt"/>
         <line num="36" count="0" type="stmt"/>
         <line num="40" count="0" type="stmt"/>
@@ -111,63 +337,108 @@
         <line num="72" count="0" type="stmt"/>
         <line num="76" count="0" type="stmt"/>
         <line num="80" count="1" type="stmt"/>
-        <line num="91" count="1" type="stmt"/>
+        <line num="91" count="3" type="stmt"/>
       </file>
     </package>
     <package name="tests.mocks">
-      <metrics statements="41" coveredstatements="26" conditionals="11" coveredconditionals="1" methods="23" coveredmethods="13"/>
+      <metrics statements="77" coveredstatements="77" conditionals="11" coveredconditionals="11" methods="55" coveredmethods="45"/>
+      <file name="CommentDatabaseMock.ts" path="C:\Users\hiani\Desktop\italo\programacao\projeto\modulo-4\labeddit\back\labeddit-back-end\tests\mocks\CommentDatabaseMock.ts">
+        <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="4"/>
+        <line num="1" count="6" type="stmt"/>
+        <line num="4" count="6" type="stmt"/>
+        <line num="27" count="6" type="stmt"/>
+        <line num="28" count="6" type="stmt"/>
+        <line num="30" count="6" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="2" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="38" count="6" type="stmt"/>
+        <line num="40" count="6" type="stmt"/>
+        <line num="42" count="6" type="stmt"/>
+      </file>
       <file name="HashManagerMock.ts" path="C:\Users\hiani\Desktop\italo\programacao\projeto\modulo-4\labeddit\back\labeddit-back-end\tests\mocks\HashManagerMock.ts">
-        <metrics statements="9" coveredstatements="4" conditionals="3" coveredconditionals="0" methods="5" coveredmethods="3"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
+        <metrics statements="9" coveredstatements="9" conditionals="3" coveredconditionals="3" methods="5" coveredmethods="5"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="12" count="0" type="cond" truecount="0" falsecount="3"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="12" count="3" type="cond" truecount="3" falsecount="0"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
       </file>
       <file name="IdGeratorMock.ts" path="C:\Users\hiani\Desktop\italo\programacao\projeto\modulo-4\labeddit\back\labeddit-back-end\tests\mocks\IdGeratorMock.ts">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
+        <line num="1" count="8" type="stmt"/>
+        <line num="2" count="8" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+      </file>
+      <file name="PostsDatabaseMock.ts" path="C:\Users\hiani\Desktop\italo\programacao\projeto\modulo-4\labeddit\back\labeddit-back-end\tests\mocks\PostsDatabaseMock.ts">
+        <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="12" coveredmethods="12"/>
+        <line num="1" count="6" type="stmt"/>
+        <line num="4" count="6" type="stmt"/>
+        <line num="25" count="6" type="stmt"/>
+        <line num="26" count="6" type="stmt"/>
+        <line num="28" count="6" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="32" count="14" type="stmt"/>
+        <line num="33" count="14" type="stmt"/>
+        <line num="34" count="28" type="stmt"/>
+        <line num="37" count="14" type="stmt"/>
+        <line num="40" count="6" type="stmt"/>
+        <line num="42" count="6" type="stmt"/>
+        <line num="44" count="6" type="stmt"/>
       </file>
       <file name="TokenManagerMock.ts" path="C:\Users\hiani\Desktop\italo\programacao\projeto\modulo-4\labeddit\back\labeddit-back-end\tests\mocks\TokenManagerMock.ts">
-        <metrics statements="14" coveredstatements="6" conditionals="8" coveredconditionals="1" methods="3" coveredmethods="2"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="cond" truecount="1" falsecount="1"/>
+        <metrics statements="14" coveredstatements="14" conditionals="8" coveredconditionals="8" methods="3" coveredmethods="3"/>
+        <line num="1" count="8" type="stmt"/>
+        <line num="3" count="8" type="stmt"/>
+        <line num="4" count="8" type="stmt"/>
+        <line num="5" count="3" type="cond" truecount="2" falsecount="0"/>
         <line num="6" count="1" type="stmt"/>
-        <line num="7" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="15" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="21" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
+        <line num="7" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="14" count="8" type="stmt"/>
+        <line num="15" count="22" type="cond" truecount="2" falsecount="0"/>
+        <line num="16" count="13" type="stmt"/>
+        <line num="21" count="9" type="cond" truecount="2" falsecount="0"/>
+        <line num="22" count="3" type="stmt"/>
+        <line num="28" count="6" type="stmt"/>
       </file>
       <file name="UserDatabaseMock.ts" path="C:\Users\hiani\Desktop\italo\programacao\projeto\modulo-4\labeddit\back\labeddit-back-end\tests\mocks\UserDatabaseMock.ts">
-        <metrics statements="15" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="13" coveredmethods="6"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="32" count="2" type="stmt"/>
-        <line num="33" count="2" type="stmt"/>
-        <line num="34" count="4" type="stmt"/>
-        <line num="37" count="2" type="stmt"/>
-        <line num="40" count="1" type="stmt"/>
-        <line num="42" count="1" type="stmt"/>
-        <line num="44" count="1" type="stmt"/>
+        <metrics statements="15" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="13" coveredmethods="9"/>
+        <line num="1" count="8" type="stmt"/>
+        <line num="2" count="8" type="stmt"/>
+        <line num="4" count="8" type="stmt"/>
+        <line num="23" count="8" type="stmt"/>
+        <line num="24" count="8" type="stmt"/>
+        <line num="26" count="8" type="stmt"/>
+        <line num="27" count="6" type="stmt"/>
+        <line num="29" count="3" type="stmt"/>
+        <line num="32" count="8" type="stmt"/>
+        <line num="33" count="6" type="stmt"/>
+        <line num="34" count="12" type="stmt"/>
+        <line num="37" count="6" type="stmt"/>
+        <line num="40" count="8" type="stmt"/>
+        <line num="42" count="8" type="stmt"/>
+        <line num="44" count="8" type="stmt"/>
+      </file>
+      <file name="likeDislikeDatabaseMock.ts" path="C:\Users\hiani\Desktop\italo\programacao\projeto\modulo-4\labeddit\back\labeddit-back-end\tests\mocks\likeDislikeDatabaseMock.ts">
+        <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="10"/>
+        <line num="1" count="6" type="stmt"/>
+        <line num="4" count="6" type="stmt"/>
+        <line num="12" count="6" type="stmt"/>
+        <line num="13" count="6" type="stmt"/>
+        <line num="15" count="6" type="stmt"/>
+        <line num="16" count="6" type="stmt"/>
+        <line num="17" count="6" type="stmt"/>
+        <line num="20" count="6" type="stmt"/>
+        <line num="23" count="6" type="stmt"/>
+        <line num="25" count="6" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="31" count="6" type="stmt"/>
       </file>
     </package>
   </project>

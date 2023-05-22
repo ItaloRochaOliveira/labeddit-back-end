@@ -3,9 +3,9 @@ import { CommentDB } from "../../src/models/Comment";
 
 const commentsMock: CommentDB[] = [
   {
-    id: "id-do-comentario-1",
-    id_user: "id-do-admin",
-    id_post: "id-do-post-1-mock",
+    id: "id-comentario-1",
+    id_user: "id-admin",
+    id_post: "id-post-1-mock",
     content: "muito legal esse primeiro teste!",
     likes: 0,
     dislikes: 0,
@@ -13,9 +13,9 @@ const commentsMock: CommentDB[] = [
     updated_at: "",
   },
   {
-    id: "id-do-comentario-2",
-    id_user: "id-do-normal",
-    id_post: "id-do-post-2-mock",
+    id: "id-comentario-2",
+    id_user: "id-normal",
+    id_post: "id-post-2-mock",
     content: "muito legal esse segundo teste!",
     likes: 0,
     dislikes: 0,

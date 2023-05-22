@@ -17,6 +17,6 @@ export const loginScheme = z.object({
     .min(1)
     .regex(
       new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,12}$/g),
-      "The password must have of 8 to 12 caracters, with uppercase and lowercase letter. Must to be minimum one number and one carater special"
+      "The password must have 8 to 12 character, with uppercase and lowercase letter. Must to be minimum of one number and one character special"
     ),
 });

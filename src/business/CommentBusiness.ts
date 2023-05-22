@@ -203,7 +203,7 @@ export class CommentBusiness {
 
     if (commentDB.id_user === userId) {
       throw new BadRequestError(
-        "It`s not possible for the creator like or dislike you own Comment."
+        "It`s not possible for the creator like or dislike your own comment."
       );
     }
 

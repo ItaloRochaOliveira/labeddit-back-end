@@ -3,22 +3,22 @@ import { PostDB } from "../../src/models/Post";
 
 const postsMock: PostDB[] = [
   {
-    id: "id-do-post-1-mock",
+    id: "id-post-1-mock",
     content: "Primeiro post para test",
-    likes: 0,
-    dislikes: 0,
+    likes: 1,
+    dislikes: 1,
     created_at: new Date().toISOString(),
     updated_at: "",
-    creator_id: "id-do-normal",
+    creator_id: "id-normal",
   },
   {
-    id: "id-do-post-2-mock",
+    id: "id-post-2-mock",
     content: "Segundo post para test",
     likes: 0,
     dislikes: 0,
     created_at: new Date().toISOString(),
     updated_at: "",
-    creator_id: "id-do-admin",
+    creator_id: "id-admin",
   },
 ];
 

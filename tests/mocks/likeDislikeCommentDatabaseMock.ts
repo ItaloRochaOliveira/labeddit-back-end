@@ -3,13 +3,13 @@ import { LikeOrDislikeCommentDB } from "../../src/models/LikeOrDislikeComment";
 
 const likeDislikeMock: LikeOrDislikeCommentDB[] = [
   {
-    id_comment: "id-do-comentario-1",
-    id_user: "id-do-admin",
+    id_comment: "id-comentario-1",
+    id_user: "id-admin",
     like: null,
   },
   {
-    id_comment: "id-do-comentario-2",
-    id_user: "id-do-normal",
+    id_comment: "id-comentario-2",
+    id_user: "id-normal",
     like: 1,
   },
 ];

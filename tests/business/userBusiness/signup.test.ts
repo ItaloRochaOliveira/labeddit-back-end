@@ -42,7 +42,6 @@ describe("Test Signup Business", () => {
       const output = await userBusiness.signup(input);
     } catch (error) {
       if (error instanceof ZodError) {
-        console.log(error.issues);
         expect(error.issues).toEqual([
           {
             code: "too_small",
@@ -86,7 +85,6 @@ describe("Test Signup Business", () => {
       const output = await userBusiness.signup(input);
     } catch (error) {
       if (error instanceof BadRequestError) {
-        console.log(error);
         expect(error.message).toBe("Email alrealdy exists.");
         expect(error.statusCode).toBe(400);
       }

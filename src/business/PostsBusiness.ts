@@ -16,6 +16,7 @@ import { UpdatePostInputDTO } from "../dtos/postDTO/updatePost.dto";
 import { Comment } from "../models/Comment";
 import { LikeOrDislikeDB } from "../models/LikeOrDislike";
 import { Post, PostDB, PostModel } from "../models/Post";
+import { USER_ROLES } from "../models/User";
 import { IdGerator } from "../services/IdGerator";
 import { TokenManager } from "../services/TokenManager";
 
@@ -33,7 +34,7 @@ export class PostsBusiness {
     const tokenPayload = this.tokenManager.getPayload(token);
 
     if (!tokenPayload) {
-      throw new NotFoundError("User don`t exist.");
+      throw new NotFoundError("User don't exist.");
     }
 
     const postsDB = await this.postsDatabase.findAllPosts();
@@ -81,10 +82,14 @@ export class PostsBusiness {
     const tokenPayload = this.tokenManager.getPayload(token);
 
     if (!tokenPayload) {
-      throw new NotFoundError("User don`t exist.");
+      throw new NotFoundError("User don't exist.");
     }
 
-    const postsDB = await this.postsDatabase.findAllPosts();
+    const postsDB = await this.postsDatabase.findPostById(idPost);
+
+    if (!postsDB.length) {
+      throw new NotFoundError("Post with this id don't exist.");
+    }
 
     let posts: any = [];
 
@@ -147,7 +152,7 @@ export class PostsBusiness {
     const tokenPayload = this.tokenManager.getPayload(token);
 
     if (!tokenPayload) {
-      throw new NotFoundError("User don`t exist.");
+      throw new NotFoundError("User don't exist.");
     }
 
     const id = this.idGerator.gerate();
@@ -167,7 +172,7 @@ export class PostsBusiness {
 
     await this.postsDatabase.createPost(newPostDB);
 
-    return "Post successfully created ";
+    return "Post successfully created.";
   };
 
   editPost = async (input: UpdatePostInputDTO) => {
@@ -176,7 +181,7 @@ export class PostsBusiness {
     const tokenPayload = this.tokenManager.getPayload(token);
 
     if (!tokenPayload) {
-      throw new NotFoundError("Usuário inexistente.");
+      throw new NotFoundError("User don't exist.");
     }
 
     const userId = tokenPayload.id;
@@ -185,6 +190,12 @@ export class PostsBusiness {
 
     if (!postDB) {
       throw new NotFoundError("Post not found.");
+    }
+
+    const postOfUser = postDB.creator_id === userId;
+
+    if (!postOfUser) {
+      throw new BadRequestError("only the user can update the post");
     }
 
     const post = new Post(
@@ -213,7 +224,19 @@ export class PostsBusiness {
     const tokenPayload = this.tokenManager.getPayload(token);
 
     if (!tokenPayload) {
-      throw new NotFoundError("Usuário inexistente.");
+      throw new NotFoundError("User don't exist.");
+    }
+
+    const [postDB] = await this.postsDatabase.findPostById(id);
+
+    if (!postDB) {
+      throw new NotFoundError("Post not found.");
+    }
+
+    const postOfUser = postDB.creator_id === tokenPayload.id;
+
+    if (!postOfUser) {
+      throw new BadRequestError("only the user can update the post");
     }
 
     await this.likesOrDislikeDatabase.deleteLikeOrDislike(id);
@@ -229,7 +252,7 @@ export class PostsBusiness {
     const tokenPayload = this.tokenManager.getPayload(token);
 
     if (!tokenPayload) {
-      throw new NotFoundError("Usuário inexistente.");
+      throw new NotFoundError("User don't exist.");
     }
 
     const userId = tokenPayload.id;
@@ -250,9 +273,13 @@ export class PostsBusiness {
 
     const [postDB] = await this.postsDatabase.findPostById(postId);
 
+    if (!postDB) {
+      throw new NotFoundError("Post not Found.");
+    }
+
     if (postDB.creator_id === userId) {
       throw new BadRequestError(
-        "Não é possivel o criador dar dislike ou like no próprio post."
+        "It`s not possible for the creator like or dislike you own comment."
       );
     }
 
