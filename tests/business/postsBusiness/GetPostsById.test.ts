@@ -46,7 +46,7 @@ describe("Test getPostsById Business", () => {
             dislikes: 0,
             id: "id-comentario-1",
             idPost: "id-post-1-mock",
-            idUser: "id-normal",
+            idUser: "id-admin",
             likes: 0,
             updatedAt: expect.any(String),
           },

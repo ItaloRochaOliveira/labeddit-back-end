@@ -18,6 +18,22 @@ const usersMock: UserDB[] = [
     role: USER_ROLES.NORMAL,
     created_at: new Date().toISOString(),
   },
+  {
+    id: "id-normal-2",
+    name: "it-user",
+    email: "it-normal-2@gmail.com",
+    password: "hash-mock-normal-it-user-2",
+    role: USER_ROLES.NORMAL,
+    created_at: new Date().toISOString(),
+  },
+  {
+    id: "id-normal-3",
+    name: "it-user",
+    email: "it-normal-3@gmail.com",
+    password: "hash-mock-normal-it-user-3",
+    role: USER_ROLES.NORMAL,
+    created_at: new Date().toISOString(),
+  },
 ];
 
 export class UserDatabaseMock extends BaseDatabase {

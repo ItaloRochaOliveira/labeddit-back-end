@@ -13,7 +13,7 @@ import { likeOrDislikeInputDTO } from "../dtos/postDTO/LikeOrDislike.dto";
 import { CreatePostInputDTO } from "../dtos/postDTO/createPost.dto";
 import { DeletePostInputDTO } from "../dtos/postDTO/deletePost.dto";
 import { UpdatePostInputDTO } from "../dtos/postDTO/updatePost.dto";
-import { Comment } from "../models/Comment";
+import { Comment, CommentModel } from "../models/Comment";
 import { LikeOrDislikeDB } from "../models/LikeOrDislike";
 import { Post, PostDB, PostModel } from "../models/Post";
 import { USER_ROLES } from "../models/User";
@@ -98,7 +98,7 @@ export class PostsBusiness {
         postDB.creator_id as string
       );
 
-      const commentsDB = await this.commentDatabase.findCommentById(idPost);
+      const commentsDB = await this.commentDatabase.findCommentByIdPost(idPost);
 
       const post = new Post(
         postDB.id,
@@ -113,13 +113,13 @@ export class PostsBusiness {
         }
       );
 
-      let comments: any = [];
+      let comments: CommentModel[] = [];
 
       for (let commentDB of commentsDB) {
-        const commentsToResult = new Comment(
+        const comment = new Comment(
           commentDB.id,
-          postDB.id,
-          id,
+          commentDB.id_post,
+          commentDB.id_user,
           commentDB.content,
           commentDB.likes,
           commentDB.dislikes,
@@ -127,7 +127,18 @@ export class PostsBusiness {
           commentDB.updated_at
         );
 
-        comments.push(commentsToResult);
+        const commentToResullt: CommentModel = {
+          id: comment.ID,
+          idUser: comment.IDUSER,
+          idPost: comment.IDPOST,
+          content: comment.CONTENT,
+          likes: comment.LIKES,
+          dislikes: comment.DISLIKES,
+          createdAt: comment.CREATEDAT,
+          updatedAt: comment.CREATEDAT,
+        };
+
+        comments.push(commentToResullt);
       }
 
       const postToResult: any = {

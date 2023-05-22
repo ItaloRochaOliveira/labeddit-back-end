@@ -2,9 +2,7 @@ import { BadRequestError } from "../customErrors/BadRequestError";
 import { NotFoundError } from "../customErrors/NotFoundError";
 import { CommentDatabase } from "../database/CommentDatabase";
 import { LikeDislikeCommentDatabase } from "../database/LikeDislikeCommentDatabase";
-import { likeDislikeDatabase } from "../database/LikeDislikeDatabase";
 import { PostDatabase } from "../database/PostsDatabase";
-import { UserDatabase } from "../database/UserDatabase";
 import { GetCommentInputDTO } from "../dtos/commentDTO/GetComments.dto";
 import { likeOrDislikeCommentInputDTO } from "../dtos/commentDTO/LikeOrDislikeComment.dto";
 import { CreateCommentInputDTO } from "../dtos/commentDTO/createComment.dto";
@@ -24,61 +22,62 @@ export class CommentBusiness {
     private idGerator: IdGerator
   ) {}
 
-  getCommentsByIdPost = async ({
-    token,
-    idPost,
-  }: GetCommentInputDTO): Promise<CommentModel[]> => {
-    const tokenPayload = this.tokenManager.getPayload(token);
+  // getCommentsByIdPost = async ({
+  //   token,
+  //   idPost,
+  // }: GetCommentInputDTO): Promise<CommentModel[]> => {
+  //   const tokenPayload = this.tokenManager.getPayload(token);
 
-    if (!tokenPayload) {
-      throw new NotFoundError("User don`t exist.");
-    }
+  //   if (!tokenPayload) {
+  //     throw new NotFoundError("User don`t exist.");
+  //   }
 
-    const commentsDB = await this.commentDatabase.findCommentById(idPost);
+  //   const commentsDB = await this.commentDatabase.findCommentByIdPost(idPost);
 
-    if (!commentsDB.length) {
-      throw new NotFoundError("Post not exist.");
-    }
+  //   if (!commentsDB.length) {
+  //     throw new NotFoundError("Post not exist.");
+  //   }
 
-    let comments: CommentModel[] = [];
+  //   let comments: CommentModel[] = [];
 
-    for (let commentDB of commentsDB) {
-      const comment = new Comment(
-        commentDB.id,
-        commentDB.id_post,
-        commentDB.id_user,
-        commentDB.content,
-        commentDB.likes,
-        commentDB.dislikes,
-        commentDB.created_at,
-        commentDB.updated_at
-      );
+  //   for (let commentDB of commentsDB) {
+  //     const comment = new Comment(
+  //       commentDB.id,
+  //       commentDB.id_post,
+  //       commentDB.id_user,
+  //       commentDB.content,
+  //       commentDB.likes,
+  //       commentDB.dislikes,
+  //       commentDB.created_at,
+  //       commentDB.updated_at
+  //     );
 
-      const commentToResullt: CommentModel = {
-        id: comment.ID,
-        idUser: comment.IDUSER,
-        idPost: comment.IDPOST,
-        content: comment.CONTENT,
-        likes: comment.LIKES,
-        dislikes: comment.DISLIKES,
-        createdAt: comment.CREATEDAT,
-        updatedAt: comment.CREATEDAT,
-      };
+  //     const commentToResullt: CommentModel = {
+  //       id: comment.ID,
+  //       idUser: comment.IDUSER,
+  //       idPost: comment.IDPOST,
+  //       content: comment.CONTENT,
+  //       likes: comment.LIKES,
+  //       dislikes: comment.DISLIKES,
+  //       createdAt: comment.CREATEDAT,
+  //       updatedAt: comment.CREATEDAT,
+  //     };
 
-      comments.push(commentToResullt);
-    }
+  //     comments.push(commentToResullt);
+  //   }
 
-    return comments;
-  };
+  //   return comments;
+  // };
 
   createCommentsByIdPost = async (
     input: CreateCommentInputDTO
   ): Promise<string> => {
     const { token, content, idPost } = input;
+
     const tokenPayload = this.tokenManager.getPayload(token);
 
     if (!tokenPayload) {
-      throw new NotFoundError("User don`t exist.");
+      throw new NotFoundError("User don't exist.");
     }
 
     const [postDB] = await this.postsDatabase.findPostById(idPost);
@@ -104,40 +103,34 @@ export class CommentBusiness {
 
     await this.commentDatabase.createComment(newCommentDB);
 
-    return "Comment successfully created ";
+    return "Comment successfully created.";
   };
 
-  editCommentsByIdPost = async (
-    input: UpdateCommentInputDTO
-  ): Promise<string> => {
-    const { token, idPost, content } = input;
+  editCommentsById = async (input: UpdateCommentInputDTO): Promise<string> => {
+    const { token, id, content } = input;
 
     const tokenPayload = this.tokenManager.getPayload(token);
 
     if (!tokenPayload) {
-      throw new NotFoundError("Usuário inexistente.");
+      throw new NotFoundError("User don't exist.");
     }
 
     const userId = tokenPayload.id;
 
-    const [postDB] = await this.postsDatabase.findPostById(idPost);
-
-    if (!postDB) {
-      throw new NotFoundError("Post not found.");
-    }
-
-    const [commentDB] = await this.commentDatabase.findCommentById(idPost);
+    const [commentDB] = await this.commentDatabase.findCommentById(id);
 
     if (!commentDB) {
       throw new NotFoundError("comment not found.");
     }
 
-    const id = this.idGerator.gerate();
+    if (commentDB.id_user !== userId) {
+      throw new BadRequestError("Only user can change your own comment");
+    }
 
     const newComment = new Comment(
       id,
-      userId,
-      postDB.id,
+      commentDB.id_user,
+      commentDB.id_post,
       content,
       0,
       0,
@@ -149,12 +142,12 @@ export class CommentBusiness {
 
     const updatePostDB = newComment.CommentToDB();
 
-    await this.postsDatabase.editPost(updatePostDB, id);
+    await this.commentDatabase.editComment(updatePostDB, id);
 
-    return "Post updated.";
+    return "Comment updated.";
   };
 
-  deleteCommentsByIdPost = async (
+  deleteCommentsById = async (
     commentForDelete: DeleteCommentInputDTO
   ): Promise<string> => {
     const { token, id } = commentForDelete;
@@ -162,7 +155,17 @@ export class CommentBusiness {
     const tokenPayload = this.tokenManager.getPayload(token);
 
     if (!tokenPayload) {
-      throw new NotFoundError("Usuário inexistente.");
+      throw new NotFoundError("User don't exist.");
+    }
+
+    const [commentDB] = await this.commentDatabase.findCommentById(id);
+
+    if (!commentDB) {
+      throw new NotFoundError("comment not found.");
+    }
+
+    if (commentDB.id_user !== tokenPayload.id) {
+      throw new BadRequestError("Only user can delete your own comment");
     }
 
     await this.commentLikeOrDislikeDatabase.deleteLikeOrDislikeComment(id);
@@ -180,7 +183,7 @@ export class CommentBusiness {
     const tokenPayload = this.tokenManager.getPayload(token);
 
     if (!tokenPayload) {
-      throw new NotFoundError("Usuário inexistente.");
+      throw new NotFoundError("User don't exist.");
     }
 
     const userId = tokenPayload.id;
@@ -200,6 +203,10 @@ export class CommentBusiness {
       await this.commentLikeOrDislikeDatabase.findLikesAndDislikesById(userId);
 
     const [commentDB] = await this.commentDatabase.findCommentById(idComment);
+
+    if (!commentDB) {
+      throw new NotFoundError("Post not Found.");
+    }
 
     if (commentDB.id_user === userId) {
       throw new BadRequestError(

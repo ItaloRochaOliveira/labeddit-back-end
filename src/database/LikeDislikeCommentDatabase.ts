@@ -2,11 +2,11 @@ import { LikeOrDislikeCommentDB } from "../models/LikeOrDislikeComment";
 import { BaseDatabase } from "./BaseDatabase";
 
 export class LikeDislikeCommentDatabase extends BaseDatabase {
-  private LIKESDISLIKESCOMMENT_TABLE = "like_dislike_comment_post";
+  private static LIKESDISLIKESCOMMENT_TABLE = "like_dislike_comment_post";
 
   findLikesAndDislikesById = async (id_user: any) => {
     const commentLikeDB = await BaseDatabase.connection(
-      this.LIKESDISLIKESCOMMENT_TABLE
+      LikeDislikeCommentDatabase.LIKESDISLIKESCOMMENT_TABLE
     ).where({ id_user });
 
     return commentLikeDB;
@@ -15,9 +15,9 @@ export class LikeDislikeCommentDatabase extends BaseDatabase {
   newLikeOrDislikeComment = async (
     newLikeComment: LikeOrDislikeCommentDB
   ): Promise<void> => {
-    await BaseDatabase.connection(this.LIKESDISLIKESCOMMENT_TABLE).insert(
-      newLikeComment
-    );
+    await BaseDatabase.connection(
+      LikeDislikeCommentDatabase.LIKESDISLIKESCOMMENT_TABLE
+    ).insert(newLikeComment);
   };
 
   updateLikeOrDislikeComment = async (
@@ -25,14 +25,18 @@ export class LikeDislikeCommentDatabase extends BaseDatabase {
     id_comment: string,
     newLikeOrDislikeComment: any
   ): Promise<void> => {
-    await BaseDatabase.connection(this.LIKESDISLIKESCOMMENT_TABLE)
+    await BaseDatabase.connection(
+      LikeDislikeCommentDatabase.LIKESDISLIKESCOMMENT_TABLE
+    )
       .update(newLikeOrDislikeComment)
       .where({ id_comment })
       .andWhere({ id_user });
   };
 
   deleteLikeOrDislikeComment = async (id_comment: string): Promise<void> => {
-    await BaseDatabase.connection(this.LIKESDISLIKESCOMMENT_TABLE)
+    await BaseDatabase.connection(
+      LikeDislikeCommentDatabase.LIKESDISLIKESCOMMENT_TABLE
+    )
       .del()
       .where({ id_comment });
   };
