@@ -17,8 +17,8 @@ const commentsMock: CommentDB[] = [
     id_user: "id-normal",
     id_post: "id-post-2-mock",
     content: "muito legal esse segundo teste!",
-    likes: 0,
-    dislikes: 0,
+    likes: 1,
+    dislikes: 1,
     created_at: new Date().toISOString(),
     updated_at: "",
   },
@@ -27,7 +27,15 @@ const commentsMock: CommentDB[] = [
 export class CommentDatabaseMock extends BaseDatabase {
   private COMMENTPOST_TABLE = "comment_post";
 
-  findCommentById = async (id_post: string): Promise<CommentDB[]> => {
+  findCommentById = async (id: string): Promise<CommentDB[]> => {
+    const commentsDB: CommentDB[] = commentsMock.filter(
+      (commentMock) => commentMock.id === id
+    );
+
+    return commentsDB;
+  };
+
+  findCommentByIdPost = async (id_post: string): Promise<CommentDB[]> => {
     const commentsDB: CommentDB[] = commentsMock.filter(
       (commentMock) => commentMock.id_post === id_post
     );

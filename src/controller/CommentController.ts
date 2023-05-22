@@ -42,11 +42,11 @@ export class CommnetController {
     try {
       const intensForUpdate = UpdateCommentScheme.parse({
         token: req.headers.authorization,
-        idPost: req.params.id,
+        id: req.params.id,
         content: req.body.content,
       });
 
-      const response = await this.commentBusiness.editCommentsByIdPost(
+      const response = await this.commentBusiness.editCommentsById(
         intensForUpdate
       );
 
@@ -71,7 +71,7 @@ export class CommnetController {
         id: req.params.id,
       });
 
-      const response = await this.commentBusiness.deleteCommentsByIdPost(
+      const response = await this.commentBusiness.deleteCommentsById(
         CommentForDelete
       );
 

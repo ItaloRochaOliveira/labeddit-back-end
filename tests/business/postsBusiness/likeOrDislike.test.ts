@@ -68,6 +68,42 @@ describe("Test likeOrDislike Business", () => {
     expect(response).toBe("Like or dislike updated");
   });
 
+  test("If like in post with like", async () => {
+    const postLikeOrDislike = likeOrDislikeScheme.parse({
+      token: "token-mock-normal-2",
+      id: "id-post-1-mock",
+      like: true,
+    });
+
+    const response = await postsBusiness.likeOrDislike(postLikeOrDislike);
+
+    expect(response).toBe("Like or dislike updated");
+  });
+
+  test("If dislike in post with like", async () => {
+    const postLikeOrDislike = likeOrDislikeScheme.parse({
+      token: "token-mock-normal-2",
+      id: "id-post-1-mock",
+      like: false,
+    });
+
+    const response = await postsBusiness.likeOrDislike(postLikeOrDislike);
+
+    expect(response).toBe("Like or dislike updated");
+  });
+
+  test("If like in post with dislike", async () => {
+    const postLikeOrDislike = likeOrDislikeScheme.parse({
+      token: "token-mock-normal-3",
+      id: "id-post-1-mock",
+      like: true,
+    });
+
+    const response = await postsBusiness.likeOrDislike(postLikeOrDislike);
+
+    expect(response).toBe("Like or dislike updated");
+  });
+
   test("If zod erros works", async () => {
     expect.assertions(1);
     try {

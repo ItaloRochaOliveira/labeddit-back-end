@@ -9,7 +9,7 @@ export interface likeOrDislikeCommentInputDTO {
 export const likeOrDislikeCommentScheme = z
   .object({
     token: z.string().min(1),
-    id: z.string().min(36, "'id' must be at least 36 characters."),
+    id: z.string().min(1, "'id' must be at least 1 characters."),
     like: z.boolean(),
   })
   .transform((data) => data as likeOrDislikeCommentInputDTO);

@@ -24,6 +24,18 @@ export class TokenManagerMock {
         name: "it-programmer",
         role: USER_ROLES.ADMIN,
       };
+    } else if (token === "token-mock-normal-2") {
+      return {
+        id: "id-normal-2",
+        name: "it-user",
+        role: USER_ROLES.NORMAL,
+      };
+    } else if (token === "token-mock-normal-3") {
+      return {
+        id: "id-normal-3",
+        name: "it-user",
+        role: USER_ROLES.NORMAL,
+      };
     } else {
       return null;
     }

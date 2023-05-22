@@ -7,6 +7,16 @@ const likeDislikeMock: LikeOrDislikeDB[] = [
     user_id: "id-admin",
     like: null,
   },
+  {
+    post_id: "id-post-1-mock",
+    user_id: "id-normal-2",
+    like: 1,
+  },
+  {
+    post_id: "id-post-1-mock",
+    user_id: "id-normal-3",
+    like: 0,
+  },
 ];
 
 export class likeDislikeDatabaseMock extends BaseDatabase {
