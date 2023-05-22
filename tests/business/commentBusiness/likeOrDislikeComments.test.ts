@@ -20,8 +20,8 @@ describe("Test CreateComment Business", () => {
 
   test("If post receives first like", async () => {
     const commentLikeOrDislike = likeOrDislikeCommentScheme.parse({
-      token: "token-mock-normal",
-      id: "id-comentario-1",
+      token: "token-mock-admin",
+      id: "id-comentario-2",
       like: true,
     });
 
@@ -34,8 +34,8 @@ describe("Test CreateComment Business", () => {
 
   test("If post receives second like", async () => {
     const commentLikeOrDislike = likeOrDislikeCommentScheme.parse({
-      token: "token-mock-admin",
-      id: "id-comentario-2",
+      token: "token-mock-normal",
+      id: "id-comentario-1",
       like: true,
     });
 
@@ -48,8 +48,8 @@ describe("Test CreateComment Business", () => {
 
   test("If post receives first dislike", async () => {
     const commentLikeOrDislike = likeOrDislikeCommentScheme.parse({
-      token: "token-mock-normal",
-      id: "id-comentario-1",
+      token: "token-mock-admin",
+      id: "id-comentario-2",
       like: false,
     });
 
@@ -62,8 +62,8 @@ describe("Test CreateComment Business", () => {
 
   test("If post receives second dislike", async () => {
     const commentLikeOrDislike = likeOrDislikeCommentScheme.parse({
-      token: "token-mock-admin",
-      id: "id-comentario-2",
+      token: "token-mock-normal",
+      id: "id-comentario-1",
       like: false,
     });
 
@@ -90,7 +90,7 @@ describe("Test CreateComment Business", () => {
 
   test("If dislike in post with like", async () => {
     const commentLikeOrDislike = likeOrDislikeCommentScheme.parse({
-      token: "token-mock-normal-2",
+      token: "token-mock-normal-3",
       id: "id-comentario-2",
       like: true,
     });
@@ -104,7 +104,7 @@ describe("Test CreateComment Business", () => {
 
   test("If like in post with dislike", async () => {
     const commentLikeOrDislike = likeOrDislikeCommentScheme.parse({
-      token: "token-mock-normal-3",
+      token: "token-mock-normal-2",
       id: "id-comentario-2",
       like: false,
     });
@@ -159,13 +159,13 @@ describe("Test CreateComment Business", () => {
     }
   });
 
-  test.only("If send wrong token", async () => {
+  test("If send wrong token", async () => {
     expect.assertions(2);
     try {
       const commentLikeOrDislike = likeOrDislikeCommentScheme.parse({
-        token: "token-mock-mock",
-        id: "id-comentario-2",
-        like: 1,
+        token: "token-mock-wrong",
+        id: "id-comentario-1",
+        like: true,
       });
 
       const response = await commentBusiness.likeOrDislikeComments(
@@ -179,45 +179,45 @@ describe("Test CreateComment Business", () => {
     }
   });
 
-  //   test("If send wrong id", async () => {
-  //     expect.assertions(2);
-  //     try {
-  //       const commentLikeOrDislike = likeOrDislikeCommentScheme.parse({
-  //         token: "token-mock-admin",
-  //         id: "id-comentario-wrong",
-  //         like: 1,
-  //       });
+  test("If send wrong id", async () => {
+    expect.assertions(2);
+    try {
+      const commentLikeOrDislike = likeOrDislikeCommentScheme.parse({
+        token: "token-mock-admin",
+        id: "id-comentario-wrong",
+        like: true,
+      });
 
-  //       const response = await commentBusiness.likeOrDislikeComments(
-  //         commentLikeOrDislike
-  //       );
-  //     } catch (error) {
-  //       if (error instanceof NotFoundError) {
-  //         expect(error.message).toBe("Post not Found.");
-  //         expect(error.statusCode).toBe(404);
-  //       }
-  //     }
-  //   });
+      const response = await commentBusiness.likeOrDislikeComments(
+        commentLikeOrDislike
+      );
+    } catch (error) {
+      if (error instanceof NotFoundError) {
+        expect(error.message).toBe("Post not Found.");
+        expect(error.statusCode).toBe(404);
+      }
+    }
+  });
 
-  //   test("If a user like you own post", async () => {
-  //     expect.assertions(2);
-  //     try {
-  //       const commentLikeOrDislike = likeOrDislikeCommentScheme.parse({
-  //         token: "token-mock-admin",
-  //         id: "id-comentario-1",
-  //         like: 1,
-  //       });
+  test("If a user like you own post", async () => {
+    expect.assertions(2);
+    try {
+      const commentLikeOrDislike = likeOrDislikeCommentScheme.parse({
+        token: "token-mock-admin",
+        id: "id-comentario-1",
+        like: true,
+      });
 
-  //       const response = await commentBusiness.likeOrDislikeComments(
-  //         commentLikeOrDislike
-  //       );
-  //     } catch (error) {
-  //       if (error instanceof BadRequestError) {
-  //         expect(error.message).toBe(
-  //           "It`s not possible for the creator like or dislike you own comment."
-  //         );
-  //         expect(error.statusCode).toBe(400);
-  //       }
-  //     }
-  //   });
+      const response = await commentBusiness.likeOrDislikeComments(
+        commentLikeOrDislike
+      );
+    } catch (error) {
+      if (error instanceof BadRequestError) {
+        expect(error.message).toBe(
+          "It's not possible for the creator like or dislike your own comment."
+        );
+        expect(error.statusCode).toBe(400);
+      }
+    }
+  });
 });
