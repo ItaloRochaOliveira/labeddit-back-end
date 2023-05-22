@@ -20,7 +20,8 @@ const postsController = new PostsController(
     new likeDislikeDatabase(),
     new CommentDatabase(),
     new TokenManager(),
-    new IdGerator()
+    new IdGerator(),
+    new LikeDislikeCommentDatabase()
   )
 );
 

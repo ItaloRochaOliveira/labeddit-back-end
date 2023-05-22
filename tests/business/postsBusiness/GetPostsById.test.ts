@@ -8,6 +8,7 @@ import { TokenManagerMock } from "../../mocks/TokenManagerMock";
 import { GetPostByIdSchema } from "../../../src/dtos/postDTO/GetPostsById.dto";
 import { ZodError } from "zod";
 import { NotFoundError } from "../../../src/customErrors/NotFoundError";
+import { LikeDislikeCommentDatabaseMock } from "../../mocks/likeDislikeCommentDatabaseMock";
 
 describe("Test getPostsById Business", () => {
   const postsBusiness = new PostsBusiness(
@@ -16,7 +17,8 @@ describe("Test getPostsById Business", () => {
     new likeDislikeDatabaseMock(),
     new CommentDatabaseMock(),
     new TokenManagerMock(),
-    new IdGeratorMock()
+    new IdGeratorMock(),
+    new LikeDislikeCommentDatabaseMock()
   );
 
   test("If return posts by id", async () => {
