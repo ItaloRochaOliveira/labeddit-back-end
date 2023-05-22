@@ -16,4 +16,4 @@ app.listen(Number(process.env.PORT) || 3003, () => {
 });
 
 app.use("/user", userRoutes);
-app.use("post", postsRoutes);
+app.use("/post", postsRoutes);
