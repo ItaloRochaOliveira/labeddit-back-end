@@ -118,26 +118,32 @@ export class PostsBusiness {
       let comments: CommentModel[] = [];
 
       for (let commentDB of commentsDB) {
+        const [{ id, name }] = await this.userDatabase.findUserById(
+          commentDB.id_user
+        );
         const comment = new Comment(
           commentDB.id,
           commentDB.id_post,
-          commentDB.id_user,
           commentDB.content,
           commentDB.likes,
           commentDB.dislikes,
           commentDB.created_at,
-          commentDB.updated_at
+          commentDB.updated_at,
+          {
+            id,
+            name,
+          }
         );
 
         const commentToResullt: CommentModel = {
           id: comment.ID,
-          idUser: comment.IDUSER,
           idPost: comment.IDPOST,
           content: comment.CONTENT,
           likes: comment.LIKES,
           dislikes: comment.DISLIKES,
           createdAt: comment.CREATEDAT,
           updatedAt: comment.CREATEDAT,
+          creator: comment.CREATOR,
         };
 
         comments.push(commentToResullt);
@@ -289,8 +295,8 @@ export class PostsBusiness {
     const likeDB: number = !like ? 0 : 1;
 
     let newUserLikeOrDislikeDB: LikeOrDislikeDB = {
-      user_id: userId,
-      post_id: postId,
+      id_user: userId,
+      id_post: postId,
       like: likeDB,
     };
 
@@ -309,7 +315,7 @@ export class PostsBusiness {
       );
     }
 
-    if (!postLikedExistDB || postLikedExistDB.post_id !== postId) {
+    if (!postLikedExistDB || postLikedExistDB.id_post !== postId) {
       let updatePost;
 
       if (!like) {

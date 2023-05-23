@@ -1,5 +1,5 @@
 export interface LikeOrDislikeDB {
-  user_id: string;
-  post_id: string;
+  id_user: string;
+  id_post: string;
   like: number | null;
 }

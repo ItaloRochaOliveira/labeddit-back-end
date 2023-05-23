@@ -7,28 +7,31 @@ export class UserDatabase extends BaseDatabase {
   findUserById = async (id: string): Promise<UserDB[]> => {
     const user: UserDB[] = await BaseDatabase.connection(
       UserDatabase.USERS_TABLE
-    ).where(id);
+    ).where({ id });
+
     return user;
   };
 
   findUserByEmail = async (email: string): Promise<UserDB[]> => {
     const user: UserDB[] = await BaseDatabase.connection(
       UserDatabase.USERS_TABLE
-    ).where(email);
+    ).where({ email });
+
     return user;
   };
 
   createUser = async (newUser: UserDB): Promise<void> => {
+    console.log(newUser);
     await BaseDatabase.connection(UserDatabase.USERS_TABLE).insert(newUser);
   };
 
   upadateUser = async (upadateUser: UserDB, id: string): Promise<void> => {
     await BaseDatabase.connection(UserDatabase.USERS_TABLE)
       .update(upadateUser)
-      .where(id);
+      .where({ id });
   };
 
   deleteUser = async (id: string): Promise<void> => {
-    await BaseDatabase.connection(UserDatabase.USERS_TABLE).del().where(id);
+    await BaseDatabase.connection(UserDatabase.USERS_TABLE).del().where({ id });
   };
 }

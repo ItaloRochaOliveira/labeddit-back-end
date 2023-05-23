@@ -9,7 +9,7 @@ import { NotFoundError } from "../../../src/customErrors/NotFoundError";
 import { BadRequestError } from "../../../src/customErrors/BadRequestError";
 import { likeOrDislikeCommentScheme } from "../../../src/dtos/commentDTO/LikeOrDislikeComment.dto";
 
-describe("Test CreateComment Business", () => {
+describe("Test likeOrDislikeComments Business", () => {
   const commentBusiness = new CommentBusiness(
     new PostDatabaseMock(),
     new CommentDatabaseMock(),
