@@ -1,5 +1,10 @@
+db
+.db
+*.db
+
 node_modules
 build
 coverage
 .DS_Store
 .env
+
