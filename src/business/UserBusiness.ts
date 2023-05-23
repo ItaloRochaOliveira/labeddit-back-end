@@ -25,6 +25,8 @@ export class UserBusiness {
       throw new BadRequestError("Email alrealdy exists.");
     }
 
+    console.log(userDB);
+
     const id = this.idGerator.gerate();
 
     const hashPassword = await this.hashManager.hash(password);
@@ -38,7 +40,11 @@ export class UserBusiness {
       new Date().toISOString()
     );
 
+    // console.log(newUser);
+
     const newUserDB = newUser.toDBModel();
+
+    // console.log(newUserDB);
 
     await this.userDatabase.createUser(newUserDB);
 

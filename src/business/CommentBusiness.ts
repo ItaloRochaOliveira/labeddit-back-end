@@ -86,17 +86,26 @@ export class CommentBusiness {
       throw new NotFoundError("Post not exist.");
     }
 
+    if (postDB.creator_id === tokenPayload.id) {
+      throw new BadRequestError(
+        "It's not possible for the creator like or dislike your own comment."
+      );
+    }
+
     const id = this.idGerator.gerate();
 
     const newComment = new Comment(
       id,
-      tokenPayload.id,
       postDB.id,
       content,
       0,
       0,
       new Date().toISOString(),
-      ""
+      "",
+      {
+        id: tokenPayload.id,
+        name: tokenPayload.name,
+      }
     );
 
     const newCommentDB = newComment.CommentToDB();
@@ -129,13 +138,16 @@ export class CommentBusiness {
 
     const newComment = new Comment(
       id,
-      commentDB.id_user,
       commentDB.id_post,
       content,
       0,
       0,
       commentDB.created_at,
-      commentDB.updated_at
+      commentDB.updated_at,
+      {
+        id: tokenPayload.id,
+        name: tokenPayload.name,
+      }
     );
 
     newComment.UPDATEDAT = new Date().toISOString();

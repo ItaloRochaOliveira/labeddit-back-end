@@ -49,7 +49,7 @@ describe("Test Login Business", () => {
     try {
       const user = loginScheme.parse({
         email: "random",
-        password: "12",
+        password: 123,
       });
 
       const output = await userBusiness.login(user);
@@ -63,11 +63,11 @@ describe("Test Login Business", () => {
             validation: "email",
           },
           {
-            code: "invalid_string",
-            message:
-              "The password must have 8 to 12 character, with uppercase and lowercase letter. Must to be minimum of one number and one character special",
+            code: "invalid_type",
+            expected: "string",
+            received: "number",
             path: ["password"],
-            validation: "regex",
+            message: "Expected string, received number",
           },
         ]);
       }

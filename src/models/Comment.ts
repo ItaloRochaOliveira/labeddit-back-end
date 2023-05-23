@@ -1,12 +1,12 @@
 export interface CommentModel {
   id: string;
-  idUser: string;
   idPost: string;
   content: string;
   likes: number;
   dislikes: number;
   createdAt: string;
   updatedAt: string;
+  creator: CreatorObj;
 }
 
 export interface CommentDB {
@@ -20,16 +20,21 @@ export interface CommentDB {
   updated_at: string;
 }
 
+export interface CreatorObj {
+  id: string;
+  name: string;
+}
+
 export class Comment {
   constructor(
     private id: string,
     private idPost: string,
-    private idUser: string,
     private content: string,
     private likes: number,
     private dislikes: number,
     private createdAt: string,
-    private updatedAt: string
+    private updatedAt: string,
+    private creator: CreatorObj
   ) {}
 
   public get ID(): string {
@@ -40,8 +45,8 @@ export class Comment {
     return this.idPost;
   }
 
-  public get IDUSER(): string {
-    return this.idUser;
+  public get CREATOR(): CreatorObj {
+    return this.creator;
   }
 
   public get CONTENT(): string {
@@ -72,8 +77,8 @@ export class Comment {
     this.idPost = newIdPost;
   }
 
-  public set IDUSER(newIdUser: string) {
-    this.idUser = newIdUser;
+  public set CREATOR(newCreator: CreatorObj) {
+    this.creator = newCreator;
   }
 
   public set CONTENT(newContent: string) {
@@ -99,8 +104,8 @@ export class Comment {
   public CommentToDB(): CommentDB {
     return {
       id: this.id,
+      id_user: this.creator.id,
       id_post: this.idPost,
-      id_user: this.idUser,
       content: this.content,
       likes: this.likes,
       dislikes: this.dislikes,

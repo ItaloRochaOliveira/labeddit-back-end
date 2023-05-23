@@ -7,6 +7,7 @@ import { PostDatabaseMock } from "../../mocks/PostsDatabaseMock";
 import { TokenManagerMock } from "../../mocks/TokenManagerMock";
 import { LikeDislikeCommentDatabaseMock } from "../../mocks/likeDislikeCommentDatabaseMock";
 import { NotFoundError } from "../../../src/customErrors/NotFoundError";
+import { BadRequestError } from "../../../src/customErrors/BadRequestError";
 
 describe("Test CreateComment Business", () => {
   const commentBusiness = new CommentBusiness(
@@ -21,7 +22,7 @@ describe("Test CreateComment Business", () => {
     const userComment = CreateCommentScheme.parse({
       token: "token-mock-normal",
       content: "comment a first post",
-      idPost: "id-post-1-mock",
+      idPost: "id-post-2-mock",
     });
 
     const result = await commentBusiness.createCommentsByIdPost(userComment);
@@ -102,6 +103,26 @@ describe("Test CreateComment Business", () => {
       if (error instanceof NotFoundError) {
         expect(error.message).toBe("Post not exist.");
         expect(error.statusCode).toBe(404);
+      }
+    }
+  });
+
+  test("If return error when user try comment your own post", async () => {
+    expect.assertions(2);
+    try {
+      const userComment = CreateCommentScheme.parse({
+        token: "token-mock-normal",
+        content: "comment a first post",
+        idPost: "id-post-1-mock",
+      });
+
+      const result = await commentBusiness.createCommentsByIdPost(userComment);
+    } catch (error) {
+      if (error instanceof BadRequestError) {
+        expect(error.message).toBe(
+          "It's not possible for the creator like or dislike your own comment."
+        );
+        expect(error.statusCode).toBe(400);
       }
     }
   });

@@ -7,7 +7,7 @@ export class CommentDatabase extends BaseDatabase {
   findCommentById = async (id: string): Promise<CommentDB[]> => {
     const commentsDB: CommentDB[] = await BaseDatabase.connection(
       CommentDatabase.COMMENTPOST_TABLE
-    ).where(id);
+    ).where({ id });
 
     return commentsDB;
   };
@@ -15,7 +15,7 @@ export class CommentDatabase extends BaseDatabase {
   findCommentByIdPost = async (id_post: string): Promise<CommentDB[]> => {
     const commentsDB: CommentDB[] = await BaseDatabase.connection(
       CommentDatabase.COMMENTPOST_TABLE
-    ).where(id_post);
+    ).where({ id_post });
 
     return commentsDB;
   };
@@ -29,12 +29,12 @@ export class CommentDatabase extends BaseDatabase {
   editComment = async (newComment: CommentDB, id: string): Promise<any> => {
     await BaseDatabase.connection(CommentDatabase.COMMENTPOST_TABLE)
       .update(newComment)
-      .where(id);
+      .where({ id });
   };
 
   deleteComment = async (id: string): Promise<any> => {
     await BaseDatabase.connection(CommentDatabase.COMMENTPOST_TABLE)
       .del()
-      .where(id);
+      .where({ id });
   };
 }

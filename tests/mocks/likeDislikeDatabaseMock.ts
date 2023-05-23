@@ -3,18 +3,18 @@ import { LikeOrDislikeDB } from "../../src/models/LikeOrDislike";
 
 const likeDislikeMock: LikeOrDislikeDB[] = [
   {
-    post_id: "id-post-1-mock",
-    user_id: "id-admin",
+    id_post: "id-post-1-mock",
+    id_user: "id-admin",
     like: null,
   },
   {
-    post_id: "id-post-1-mock",
-    user_id: "id-normal-2",
+    id_post: "id-post-1-mock",
+    id_user: "id-normal-2",
     like: 1,
   },
   {
-    post_id: "id-post-1-mock",
-    user_id: "id-normal-3",
+    id_post: "id-post-1-mock",
+    id_user: "id-normal-3",
     like: 0,
   },
 ];
@@ -22,9 +22,9 @@ const likeDislikeMock: LikeOrDislikeDB[] = [
 export class likeDislikeDatabaseMock extends BaseDatabase {
   private LIKESDISLIKES_TABLE = "like_dislike";
 
-  findLikesAndDislikesById = async (user_id: any) => {
+  findLikesAndDislikesById = async (id_user: any) => {
     const postLikedDB = likeDislikeMock.filter(
-      (likeDislike) => likeDislike.user_id === user_id
+      (likeDislike) => likeDislike.id_user === id_user
     );
 
     return postLikedDB;

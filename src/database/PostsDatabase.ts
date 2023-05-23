@@ -15,7 +15,7 @@ export class PostDatabase extends BaseDatabase {
   findPostById = async (id: string): Promise<PostDB[]> => {
     const postsDB: PostDB[] = await BaseDatabase.connection(
       PostDatabase.POST_TABLE
-    ).where(id);
+    ).where({ id });
 
     return postsDB;
   };
@@ -27,10 +27,10 @@ export class PostDatabase extends BaseDatabase {
   editPost = async (newPost: PostDB, id: string): Promise<any> => {
     await BaseDatabase.connection(PostDatabase.POST_TABLE)
       .update(newPost)
-      .where(id);
+      .where({ id });
   };
 
   deletePost = async (id: string): Promise<any> => {
-    await BaseDatabase.connection(PostDatabase.POST_TABLE).del().where(id);
+    await BaseDatabase.connection(PostDatabase.POST_TABLE).del().where({ id });
   };
 }
