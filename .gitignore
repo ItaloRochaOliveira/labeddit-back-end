@@ -3,3 +3,7 @@ build
 coverage
 .DS_Store
 .env
+
+db
+.db
+*.db
