@@ -113,4 +113,11 @@ export class Comment {
       updated_at: this.updatedAt,
     };
   }
+
+  public CommentToGetAllPost(): any {
+    return {
+      id: this.id,
+      content: this.content,
+    };
+  }
 }
