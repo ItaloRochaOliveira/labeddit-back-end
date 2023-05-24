@@ -6,6 +6,7 @@ export interface PostModel {
   createdAt: string;
   updatedAt: string;
   creator: CreatorObj | undefined;
+  comments: CommentsObj;
 }
 
 export interface PostDB {
@@ -18,7 +19,12 @@ export interface PostDB {
   updated_at: string;
 }
 
-interface CreatorObj {
+export interface CreatorObj {
+  id: string;
+  name: string;
+}
+
+export interface CommentsObj {
   id: string;
   name: string;
 }

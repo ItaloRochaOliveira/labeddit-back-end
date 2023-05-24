@@ -16,7 +16,7 @@ import { DeletePostInputDTO } from "../dtos/postDTO/deletePost.dto";
 import { UpdatePostInputDTO } from "../dtos/postDTO/updatePost.dto";
 import { Comment, CommentModel } from "../models/Comment";
 import { LikeOrDislikeDB } from "../models/LikeOrDislike";
-import { Post, PostDB, PostModel } from "../models/Post";
+import { CommentsObj, Post, PostDB, PostModel } from "../models/Post";
 import { USER_ROLES } from "../models/User";
 import { IdGerator } from "../services/IdGerator";
 import { TokenManager } from "../services/TokenManager";
@@ -48,6 +48,35 @@ export class PostsBusiness {
         postDB.creator_id as string
       );
 
+      const commentsDB = await this.commentDatabase.findCommentByIdPost(
+        postDB.id
+      );
+
+      let comments: any = [];
+
+      for (let commentDB of commentsDB) {
+        const [{ id, name }] = await this.userDatabase.findUserById(
+          commentDB.id_user
+        );
+        const comment = new Comment(
+          commentDB.id,
+          commentDB.id_post,
+          commentDB.content,
+          commentDB.likes,
+          commentDB.dislikes,
+          commentDB.created_at,
+          commentDB.updated_at,
+          {
+            id,
+            name,
+          }
+        );
+
+        const commentToResullt: CommentsObj[] = comment.CommentToGetAllPost();
+
+        comments.push(commentToResullt);
+      }
+
       const post = new Post(
         postDB.id,
         postDB.content,
@@ -58,7 +87,8 @@ export class PostsBusiness {
         {
           id,
           name,
-        }
+        },
+        ""
       );
 
       const postToResult: PostModel = {
@@ -69,6 +99,7 @@ export class PostsBusiness {
         createdAt: post.CREATEDAT,
         updatedAt: post.CREATEDAT,
         creator: post.CREATOR,
+        comments,
       };
 
       posts.push(postToResult);
