@@ -1,3 +1,5 @@
+import { LikeOrDislikeComment } from "./LikeOrDislikeComment";
+
 export interface CommentModel {
   id: string;
   idPost: string;
@@ -7,6 +9,7 @@ export interface CommentModel {
   createdAt: string;
   updatedAt: string;
   creator: CreatorObj;
+  impressions: LikeOrDislikeComment;
 }
 
 export interface CommentDB {
@@ -21,6 +24,11 @@ export interface CommentDB {
 }
 
 export interface CreatorObj {
+  id: string;
+  name: string;
+}
+
+export interface CommentsObj {
   id: string;
   name: string;
 }
