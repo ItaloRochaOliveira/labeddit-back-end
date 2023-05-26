@@ -14,9 +14,14 @@ import { likeOrDislikeInputDTO } from "../dtos/postDTO/LikeOrDislike.dto";
 import { CreatePostInputDTO } from "../dtos/postDTO/createPost.dto";
 import { DeletePostInputDTO } from "../dtos/postDTO/deletePost.dto";
 import { UpdatePostInputDTO } from "../dtos/postDTO/updatePost.dto";
-import { Comment, CommentModel } from "../models/Comment";
-import { LikeOrDislikeDB } from "../models/LikeOrDislike";
-import { CommentsObj, Post, PostDB, PostModel } from "../models/Post";
+import { Comment, CommentModel, CommentsObj } from "../models/Comment";
+import {
+  LikeDislike,
+  LikeOrDislike,
+  LikeOrDislikeDB,
+} from "../models/LikeOrDislike";
+import { LikeDislikeComment } from "../models/LikeOrDislikeComment";
+import { Post, PostDB, PostModel } from "../models/Post";
 import { USER_ROLES } from "../models/User";
 import { IdGerator } from "../services/IdGerator";
 import { TokenManager } from "../services/TokenManager";
@@ -58,6 +63,7 @@ export class PostsBusiness {
         const [{ id, name }] = await this.userDatabase.findUserById(
           commentDB.id_user
         );
+
         const comment = new Comment(
           commentDB.id,
           commentDB.id_post,
@@ -72,9 +78,29 @@ export class PostsBusiness {
           }
         );
 
-        const commentToResullt: CommentsObj[] = comment.CommentToGetAllPost();
+        const commentToResullt: CommentsObj = comment.CommentToGetAllPost();
 
         comments.push(commentToResullt);
+      }
+
+      const likeDislikesDB =
+        await this.likesOrDislikeDatabase.findLikesAndDislikesByIdPost(
+          postDB.id
+        );
+
+      let impressions: any = [];
+
+      for (let likeDislikeDB of likeDislikesDB) {
+        const likeDislike = new LikeDislike(
+          likeDislikeDB.id_post,
+          likeDislikeDB.id_user,
+          likeDislikeDB.like
+        );
+
+        const likeDislikeToResult: LikeOrDislike =
+          likeDislike.LikeDislikeToResult();
+
+        impressions.push(likeDislike);
       }
 
       const post = new Post(
@@ -100,6 +126,7 @@ export class PostsBusiness {
         updatedAt: post.CREATEDAT,
         creator: post.CREATOR,
         comments,
+        impressions,
       };
 
       posts.push(postToResult);
@@ -152,6 +179,7 @@ export class PostsBusiness {
         const [{ id, name }] = await this.userDatabase.findUserById(
           commentDB.id_user
         );
+
         const comment = new Comment(
           commentDB.id,
           commentDB.id_post,
@@ -166,6 +194,25 @@ export class PostsBusiness {
           }
         );
 
+        const likeDislikesCommentDB =
+          await this.likeDislikeCommentDatabase.findLikesAndDislikesByIdComment(
+            commentDB.id
+          );
+
+        const impressions: any = [];
+        for (let likeDislikeCommentDB of likeDislikesCommentDB) {
+          const likeDislikeComment = new LikeDislikeComment(
+            likeDislikeCommentDB.id_user,
+            likeDislikeCommentDB.id_comment,
+            likeDislikeCommentDB.like
+          );
+
+          const likeDislikeCommentToResult =
+            likeDislikeComment.LikeDislikeToResult();
+
+          impressions.push(likeDislikeCommentToResult);
+        }
+
         const commentToResullt: CommentModel = {
           id: comment.ID,
           idPost: comment.IDPOST,
@@ -175,6 +222,7 @@ export class PostsBusiness {
           createdAt: comment.CREATEDAT,
           updatedAt: comment.CREATEDAT,
           creator: comment.CREATOR,
+          impressions,
         };
 
         comments.push(commentToResullt);

@@ -4,10 +4,22 @@ import { BaseDatabase } from "./BaseDatabase";
 export class likeDislikeDatabase extends BaseDatabase {
   private static LIKESDISLIKES_TABLE = "like_dislike";
 
-  findLikesAndDislikesById = async (id_user: any) => {
-    const postLikedDB = await BaseDatabase.connection(
+  findLikesAndDislikesById = async (
+    id_user: string
+  ): Promise<LikeOrDislikeDB[]> => {
+    const postLikedDB: LikeOrDislikeDB[] = await BaseDatabase.connection(
       likeDislikeDatabase.LIKESDISLIKES_TABLE
     ).where({ id_user });
+
+    return postLikedDB;
+  };
+
+  findLikesAndDislikesByIdPost = async (
+    id_post: string
+  ): Promise<LikeOrDislikeDB[]> => {
+    const postLikedDB: LikeOrDislikeDB[] = await BaseDatabase.connection(
+      likeDislikeDatabase.LIKESDISLIKES_TABLE
+    ).where({ id_post });
 
     return postLikedDB;
   };

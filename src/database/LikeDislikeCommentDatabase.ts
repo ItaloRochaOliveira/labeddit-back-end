@@ -12,6 +12,14 @@ export class LikeDislikeCommentDatabase extends BaseDatabase {
     return commentLikeDB;
   };
 
+  findLikesAndDislikesByIdComment = async (id_comment: any) => {
+    const commentLikeDB = await BaseDatabase.connection(
+      LikeDislikeCommentDatabase.LIKESDISLIKESCOMMENT_TABLE
+    ).where({ id_comment });
+
+    return commentLikeDB;
+  };
+
   newLikeOrDislikeComment = async (
     newLikeComment: LikeOrDislikeCommentDB
   ): Promise<void> => {
