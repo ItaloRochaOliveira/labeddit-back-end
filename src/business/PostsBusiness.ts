@@ -380,8 +380,10 @@ export class PostsBusiness {
     };
 
     const [postLikedExistDB] =
-      await this.likesOrDislikeDatabase.findLikesAndDislikesById(userId);
-    const postWithLikeExist = postLikedExistDB.id_post === postId;
+      await this.likesOrDislikeDatabase.findLikesAndDislikesById(
+        postId,
+        userId
+      );
 
     const [postDB] = await this.postsDatabase.findPostById(postId);
 
@@ -395,7 +397,7 @@ export class PostsBusiness {
       );
     }
 
-    if (!postLikedExistDB || !postWithLikeExist) {
+    if (!postLikedExistDB) {
       let updatePost;
 
       if (!like) {
@@ -411,7 +413,7 @@ export class PostsBusiness {
       );
 
       response = "Like or dislike updated";
-    } else if (postLikedExistDB && postWithLikeExist) {
+    } else {
       let updatePost: PostDB | undefined;
 
       if (!like && postLikedExistDB.like === null) {
@@ -451,8 +453,6 @@ export class PostsBusiness {
       );
 
       response = "Like or dislike updated";
-    } else {
-      response = "It's not possible like or dislike";
     }
 
     return response;
