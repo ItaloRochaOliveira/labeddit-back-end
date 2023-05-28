@@ -92,8 +92,8 @@ export class PostsBusiness {
 
       for (let likeDislikeDB of likeDislikesDB) {
         const likeDislike = new LikeDislike(
-          likeDislikeDB.id_post,
           likeDislikeDB.id_user,
+          likeDislikeDB.id_post,
           likeDislikeDB.like
         );
 
