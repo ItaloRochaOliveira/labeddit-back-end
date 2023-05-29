@@ -1,4 +1,4 @@
-# **Projeto Labook**
+# **Projeto Labeddit**
 
 ## 📖 Introdução
 
