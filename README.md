@@ -13,6 +13,8 @@ Os conteúdos principais a serem estudados são:
 - Programação Orientada a Objeto.
 - Autenticação.
 
+STATUS: em processo...
+
 ## 🔗Link de Acesso
 
 - Documentação: em processo...
