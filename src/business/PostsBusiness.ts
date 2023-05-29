@@ -100,7 +100,7 @@ export class PostsBusiness {
         const likeDislikeToResult: LikeOrDislike =
           likeDislike.LikeDislikeToResult();
 
-        impressions.push(likeDislike);
+        impressions.push(likeDislikeToResult);
       }
 
       const post = new Post(
@@ -228,6 +228,26 @@ export class PostsBusiness {
         comments.push(commentToResullt);
       }
 
+      const likeDislikesDB =
+        await this.likesOrDislikeDatabase.findLikesAndDislikesByIdPost(
+          postDB.id
+        );
+
+      let impressions: any = [];
+
+      for (let likeDislikeDB of likeDislikesDB) {
+        const likeDislike = new LikeDislike(
+          likeDislikeDB.id_user,
+          likeDislikeDB.id_post,
+          likeDislikeDB.like
+        );
+
+        const likeDislikeToResult: LikeOrDislike =
+          likeDislike.LikeDislikeToResult();
+
+        impressions.push(likeDislikeToResult);
+      }
+
       const postToResult: any = {
         id: post.ID,
         content: post.CONTENT,
@@ -237,6 +257,7 @@ export class PostsBusiness {
         updatedAt: post.CREATEDAT,
         creator: post.CREATOR,
         comments: comments,
+        impressions: impressions,
       };
 
       posts.push(postToResult);
