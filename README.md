@@ -2,7 +2,7 @@
 
 ## 📖 Introdução
 
-O Projeto Labeddit é uma API de posts onde é possível criar uma conta ou logar nela onde é possível também criar posts, podendo curtir e comentar.
+O Projeto Labeddit é uma API de posts onde é possível criar uma conta ou logar nela onde é possível também criar posts, podendo curtir e comentar. O projeto também foi feito com o intuito de servir como base para o front onde o mesmo é implementado no programa. Segue o anexo: [clique aqui!](https://github.com/ItaloRochaOliveira/labeddit-front-end/blob/main/README.md)
 
 Os conteúdos principais a serem estudados são:
 
