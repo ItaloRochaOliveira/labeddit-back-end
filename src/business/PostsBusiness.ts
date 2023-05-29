@@ -26,6 +26,8 @@ import { USER_ROLES } from "../models/User";
 import { IdGerator } from "../services/IdGerator";
 import { TokenManager } from "../services/TokenManager";
 
+//tentando resolver erro no deploy
+
 export class PostsBusiness {
   constructor(
     private postsDatabase: PostDatabase,
