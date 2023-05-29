@@ -213,7 +213,10 @@ export class CommentBusiness {
     };
 
     const [commentLikedExistDB] =
-      await this.commentLikeOrDislikeDatabase.findLikesAndDislikesById(userId);
+      await this.commentLikeOrDislikeDatabase.findLikesAndDislikesById(
+        userId,
+        idComment
+      );
 
     const [commentDB] = await this.commentDatabase.findCommentById(idComment);
 

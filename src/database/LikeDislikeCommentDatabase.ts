@@ -1,18 +1,26 @@
+import { CommentDB } from "../models/Comment";
 import { LikeOrDislikeCommentDB } from "../models/LikeOrDislikeComment";
 import { BaseDatabase } from "./BaseDatabase";
 
 export class LikeDislikeCommentDatabase extends BaseDatabase {
   private static LIKESDISLIKESCOMMENT_TABLE = "like_dislike_comment_post";
 
-  findLikesAndDislikesById = async (id_user: any) => {
+  findLikesAndDislikesById = async (
+    id_user: string,
+    id_comment: string
+  ): Promise<LikeOrDislikeCommentDB[]> => {
     const commentLikeDB = await BaseDatabase.connection(
       LikeDislikeCommentDatabase.LIKESDISLIKESCOMMENT_TABLE
-    ).where({ id_user });
+    )
+      .where({ id_user })
+      .andWhere({ id_comment });
 
     return commentLikeDB;
   };
 
-  findLikesAndDislikesByIdComment = async (id_comment: any) => {
+  findLikesAndDislikesByIdComment = async (
+    id_comment: string
+  ): Promise<LikeOrDislikeCommentDB[]> => {
     const commentLikeDB = await BaseDatabase.connection(
       LikeDislikeCommentDatabase.LIKESDISLIKESCOMMENT_TABLE
     ).where({ id_comment });
