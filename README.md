@@ -17,7 +17,7 @@ STATUS: em processo...
 
 ## 🔗Link de Acesso
 
-- Documentação: em processo...
+- Documentação: [clique aqui!](https://documenter.getpostman.com/view/25826643/2s93sW8FGr).
 
 ## 📄Concepção do Projeto
 
