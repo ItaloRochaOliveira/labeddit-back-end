@@ -47,6 +47,7 @@ signup, com o método get.
 signup, com o método post.
 -CreateComment: Pode criar um comentário na API, mas só se informar o token criado no login ou
 signup, com o método post.
+
 -LikeOrDislikePost - Mecânica de like ou dislike do post da API, mas só se for informado o token
 adquirido no login ou signup e o id do post a ser curtido, também será necessário informar
 no body o true ou false, onde true é like e false deslike.
