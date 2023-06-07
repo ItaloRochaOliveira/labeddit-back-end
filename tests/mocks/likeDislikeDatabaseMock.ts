@@ -22,9 +22,23 @@ const likeDislikeMock: LikeOrDislikeDB[] = [
 export class likeDislikeDatabaseMock extends BaseDatabase {
   private LIKESDISLIKES_TABLE = "like_dislike";
 
-  findLikesAndDislikesById = async (id_user: any) => {
-    const postLikedDB = likeDislikeMock.filter(
-      (likeDislike) => likeDislike.id_user === id_user
+  findLikesAndDislikesById = async (
+    id_post: string,
+    id_user: string
+  ): Promise<LikeOrDislikeDB[]> => {
+    const postLikedDB: LikeOrDislikeDB[] = likeDislikeMock.filter(
+      (likeDislike) =>
+        likeDislike.id_user === id_user && likeDislike.id_post === id_post
+    );
+
+    return postLikedDB;
+  };
+
+  findLikesAndDislikesByIdPost = async (
+    id_post: string
+  ): Promise<LikeOrDislikeDB[]> => {
+    const postLikedDB: LikeOrDislikeDB[] = likeDislikeMock.filter(
+      (likeDislike) => likeDislike.id_post === id_post
     );
 
     return postLikedDB;

@@ -29,6 +29,7 @@ describe("Test getPostsById Business", () => {
 
     const posts = await postsBusiness.getPostsById(input);
 
+    console.log(posts);
     expect(posts).toEqual([
       {
         id: "id-post-1-mock",
@@ -54,6 +55,26 @@ describe("Test getPostsById Business", () => {
               id: "id-admin",
               name: "it-programmer",
             },
+            impressions: [
+              {
+                idUser: "id-normal",
+                like: null,
+              },
+            ],
+          },
+        ],
+        impressions: [
+          {
+            idUser: "id-admin",
+            like: null,
+          },
+          {
+            idUser: "id-normal-2",
+            like: 1,
+          },
+          {
+            idUser: "id-normal-3",
+            like: 0,
           },
         ],
       },
