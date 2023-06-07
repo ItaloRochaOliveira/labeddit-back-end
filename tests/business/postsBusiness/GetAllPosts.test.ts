@@ -40,6 +40,26 @@ describe("Test GetAllPosts Business", () => {
           id: "id-normal",
           name: "it-user",
         },
+        comments: [
+          {
+            content: "muito legal esse primeiro teste!",
+            id: "id-comentario-1",
+          },
+        ],
+        impressions: [
+          {
+            idUser: "id-admin",
+            like: null,
+          },
+          {
+            idUser: "id-normal-2",
+            like: 1,
+          },
+          {
+            idUser: "id-normal-3",
+            like: 0,
+          },
+        ],
       },
       {
         id: "id-post-2-mock",
@@ -52,6 +72,13 @@ describe("Test GetAllPosts Business", () => {
           id: "id-admin",
           name: "it-programmer",
         },
+        comments: [
+          {
+            content: "muito legal esse segundo teste!",
+            id: "id-comentario-2",
+          },
+        ],
+        impressions: [],
       },
     ]);
   });
